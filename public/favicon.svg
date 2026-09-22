@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#051329"/>
+  <!-- Offshore Vessel / Chevron dynamic icon -->
+  <path d="M32 10 L48 24 L42 24 L32 15 L22 24 L16 24 Z" fill="#f26522"/>
+  <path d="M32 22 L52 38 L45 38 L32 27 L19 38 L12 38 Z" fill="#0072ce"/>
+  <path d="M32 34 L54 50 L46 50 L32 39 L18 50 L10 50 Z" fill="#e5a93b"/>
+  <circle cx="32" cy="32" r="3" fill="#ffffff"/>
+</svg>

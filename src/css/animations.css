@@ -1,0 +1,600 @@
+/* ==========================================================================
+   MTS OFFSHORE - RICH INTERACTIVE ANIMATIONS & HOVER STATES
+   ========================================================================== */
+
+/* 1. HERO SECTION ENTRANCE & AMBIENT ANIMATIONS */
+@keyframes heroFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroBackgroundPan {
+  0% {
+    background-position: center top;
+  }
+  50% {
+    background-position: center center;
+  }
+  100% {
+    background-position: center top;
+  }
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.home-four-hero-puzzle-wrapper {
+  animation: heroFadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.6s ease;
+}
+
+.home-four-content-block .tag-two-block {
+  animation: heroFadeInUp 0.8s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.home-four-content-block h1 {
+  animation: heroFadeInUp 0.9s 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.home-four-content-block p {
+  animation: heroFadeInUp 0.9s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.home-four-content-block .home-one-hero-btn-flex {
+  animation: heroFadeInUp 0.9s 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.tag-two {
+  position: relative;
+  overflow: hidden;
+  border-left: 3px solid #e5a93b !important;
+}
+
+/* 2. SERVICES CARDS 3D HOVER ANIMATION (Webflow-like interactivity in pure CSS) */
+.home-four-service-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-four-service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -8px rgba(5, 19, 41, 0.32);
+}
+
+.home-four-service-card .cover-image {
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  will-change: transform;
+}
+
+.home-four-service-card:hover .cover-image {
+  transform: scale(1.08);
+  filter: brightness(0.92);
+}
+
+/* Content Container Inside Card - Always fully and comfortably visible */
+.home-four-service-card .home-four-services-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 22px 22px;
+  background: linear-gradient(0deg, rgba(5, 19, 41, 0.95) 0%, rgba(5, 19, 41, 0.72) 65%, rgba(5, 19, 41, 0) 100%);
+  transform: none;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.home-four-service-card:hover .home-four-services-card-content {
+  transform: none;
+}
+
+.home-four-services-card-tag {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.home-four-service-card:hover .home-four-services-card-tag {
+  background-color: #0072ce;
+  color: #ffffff;
+}
+
+.home-four-service-card .inline-btn-flex {
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  min-height: 24px;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-four-service-card:hover .inline-btn-flex {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.home-four-service-card .learn-more-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: fit-content !important;
+  white-space: nowrap !important;
+  color: #ffffff !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid #ffffff !important; /* Thin 1px line matching photo 2 */
+  padding-bottom: 2px !important;
+  line-height: 1.4 !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+.home-four-service-card .learn-more-btn img {
+  width: 18px !important;
+  height: 10px !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.home-four-service-card:hover .learn-more-btn:hover img {
+  transform: translateX(4px) !important;
+}
+
+/* 3. ABOUT US HOVER & REVEAL ANIMATIONS */
+.home-four-about-us-creative {
+  position: relative;
+  transition: transform 0.4s ease;
+}
+
+.home-four-about-us-creative:hover {
+  transform: translateY(-4px);
+}
+
+.creative-image-block {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(5, 19, 41, 0.14);
+}
+
+.creative-image-block img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.creative-image-block:hover img {
+  transform: scale(1.05);
+}
+
+.home-four-about-content-absolute {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.home-four-about-content-absolute:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 32px rgba(5, 19, 41, 0.25);
+}
+
+.home-four-about-us-flex img {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-four-about-us-flex:hover img {
+  transform: scale(1.2) rotate(6deg);
+}
+
+/* 4. PROJECTS LOOP MARQUEE & CARD HOVER */
+.home-three-project-section-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.home-three-project-section-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(5, 19, 41, 0.28);
+}
+
+.home-three-project-section-item .cover-image {
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+}
+
+.home-three-project-section-item:hover .cover-image {
+  transform: scale(1.08);
+  filter: brightness(0.9);
+}
+
+/* 5. BUTTONS & LINKS MICRO-ANIMATIONS */
+.body-button, .button-2 {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s ease;
+}
+
+.body-button:hover, .button-2:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 114, 206, 0.3);
+}
+
+.body-button img {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.body-button:hover img {
+  transform: translateX(4px);
+}
+
+/* 6. NAVBAR LINK ROLL-OVER EFFECT */
+.single-menu {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.single-menu::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #0072ce;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.single-menu:hover::after,
+.single-menu.w--current::after {
+  width: 100%;
+  left: 0;
+}
+
+/* 7. SMOOTH SCROLLING */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 8. SERVICES PAGE ENHANCEMENTS */
+.service-one-hero-section {
+  padding: 80px 15px 240px;
+  background-color: transparent;
+}
+
+.service-one-hero-image-section {
+  margin-top: -190px;
+  margin-bottom: 70px;
+  position: relative;
+  z-index: 2;
+}
+
+.service-one-hero-image-flex {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.service-one-hero-image-flex img {
+  border-radius: 10px;
+  box-shadow: 0 16px 36px rgba(5, 19, 41, 0.12);
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.service-one-hero-image-flex img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 42px rgba(5, 19, 41, 0.18);
+}
+
+.home-four-service-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(5, 19, 41, 0.08);
+  background-color: #0f172a;
+  height: 440px;
+}
+
+.home-four-service-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-four-service-card:hover img {
+  transform: scale(1.06);
+}
+
+.home-four-service-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 19, 41, 0) 30%, rgba(5, 19, 41, 0.72) 75%, rgba(5, 19, 41, 0.95) 100%);
+  pointer-events: none;
+}
+
+.home-four-services-card-content {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 24px 22px 28px;
+  z-index: 2;
+}
+
+.home-four-services-card-tag-block {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.home-four-services-card-tag {
+  background-color: #f6b61b;
+  color: #0c1a2e;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 4px 8px;
+  border-radius: 2px;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.service-one-text-block {
+  color: #ffffff;
+  font-family: Montserrat, sans-serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.why-choose-us-work-block {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  height: 100%;
+  background-color: #0f172a;
+  cursor: pointer;
+}
+
+.why-choose-us-work-block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.why-choose-us-work-block:hover img {
+  transform: scale(1.05);
+}
+
+.why-choose-us-work-block-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 19, 41, 0.35);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.why-choose-us-work-block:hover .why-choose-us-work-block-overlay {
+  opacity: 1;
+}
+
+.why-choose-us-work-block-plus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.6);
+  width: 48px;
+  height: 48px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.25);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  z-index: 3;
+  text-decoration: none;
+}
+
+.why-choose-us-work-block:hover .why-choose-us-work-block-plus {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.why-choose-us-work-block-plus:hover {
+  transform: translate(-50%, -50%) scale(1.1) !important;
+  box-shadow: 0 0 0 11px rgba(255, 255, 255, 0.4) !important;
+}
+
+.why-choose-us-work-block-plus img {
+  width: 16px !important;
+  height: 16px !important;
+  display: block !important;
+}
+
+@media screen and (max-width: 991px) {
+  .service-one-hero-section {
+    padding: 50px 15px 120px;
+  }
+  .service-one-hero-section-flex {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+  .service-one-hero-image-section {
+    margin-top: -60px !important;
+  }
+  .service-one-hero-image-flex {
+    flex-direction: column !important;
+  }
+  .why-choose-us-section-flex {
+    flex-direction: column !important;
+    gap: 50px !important;
+  }
+  .why-choose-us-work-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   GLOBAL TEXT FADE & REVEAL ANIMATIONS (HOME, SERVICES, SPMS, PROJECTS, ABOUT, CONTACT)
+   ========================================================================== */
+@keyframes textFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered classes for immediate page-load hero text */
+.text-fade-tag {
+  animation: textFadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.text-fade-title {
+  animation: textFadeInUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+}
+
+.text-fade-desc {
+  animation: textFadeInUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.36s both;
+}
+
+.text-fade-btn {
+  animation: textFadeInUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+/* Scroll reveal for titles, tags, and key text blocks across all pages */
+.text-reveal-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(3px);
+  transition: 
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+.text-reveal-fade.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Stagger delay classes for luxurious cascading reveal */
+.reveal-delay-1 {
+  transition-delay: 0.08s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.18s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.28s;
+}
+
+.reveal-delay-4 {
+  transition-delay: 0.38s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-reveal-fade {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   BACK TO TOP FLOATING BUTTON
+   ========================================================================== */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #081a36;
+  border: 2px solid rgba(0, 114, 206, 0.4);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 99999;
+  box-shadow: 0 8px 24px rgba(5, 19, 41, 0.28);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(18px) scale(0.9);
+}
+
+.back-to-top-btn.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.back-to-top-btn:hover {
+  background: #0072ce;
+  border-color: #ffb800;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 14px 28px rgba(0, 114, 206, 0.38);
+}
+
+.back-to-top-btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.back-to-top-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.25s ease;
+}
+
+.back-to-top-btn:hover .back-to-top-icon {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .back-to-top-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+}

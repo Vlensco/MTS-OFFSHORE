@@ -1,0 +1,376 @@
+/* ==========================================================================
+   MTS OFFSHORE - ADVANCED MOBILE & TABLET RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Prevent any accidental horizontal overflow on mobile */
+html, body {
+  overflow-x: clip !important;
+  width: 100%;
+  max-width: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   TABLET & MOBILE BREAKPOINTS (max-width: 991px)
+   ========================================================================== */
+@media screen and (max-width: 991px) {
+  /* Header Container */
+  .home-one-header-one-flex {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 12px 20px !important;
+    width: 100% !important;
+  }
+
+  .div-block-3 {
+    flex: 0 1 auto !important;
+    margin: 0 !important;
+  }
+
+  .div-block-3 img {
+    max-height: 46px !important;
+    width: auto !important;
+  }
+
+  /* Hide Desktop Menu */
+  .menu-list {
+    display: none !important;
+  }
+
+  /* Hamburger Trigger Icon */
+  .trigger-menu {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .trigger-menu-icon-block,
+  .trigger-menu-icon-block.home-two-trigger {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    padding: 10px 12px !important;
+    background-color: #0c3247 !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    width: 44px !important;
+    height: 40px !important;
+  }
+
+  .menu-line {
+    width: 22px !important;
+    height: 2px !important;
+    background-color: #ffffff !important;
+    margin: 0 !important;
+    border-radius: 2px !important;
+    transition: all 0.3s ease !important;
+  }
+
+  /* Top Utility Bar */
+  .header-three section,
+  .header-two section {
+    padding: 6px 14px !important;
+  }
+
+  .button-2, .button-2.w-button {
+    font-size: 0.76rem !important;
+    padding: 6px 14px !important;
+    letter-spacing: 0.04em !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+
+  /* About Section Grid */
+  .home-four-about-us-main {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 48px !important;
+  }
+
+  .home-four-about-us-creative {
+    width: 100% !important;
+    max-width: 520px !important;
+    margin: 0 auto !important;
+  }
+
+  .creative-image-block {
+    height: 360px !important;
+    width: 100% !important;
+  }
+
+  .creative-image-block img {
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .home-four-about-content-absolute {
+    position: absolute !important;
+    bottom: -15px !important;
+    right: 10px !important;
+    max-width: 180px !important;
+  }
+
+  .home-four-about-content-absolute img {
+    width: 140px !important;
+    height: 105px !important;
+  }
+
+  .experience-content-block {
+    margin-top: 10px !important;
+  }
+
+  .experience-content-block .heading-five {
+    font-size: 1.8rem !important;
+    line-height: 1 !important;
+  }
+
+  .experience-content-block .heading-six {
+    font-size: 0.72rem !important;
+    width: auto !important;
+  }
+
+  /* Planning Accordion Stack */
+  .home-four-planing-flex {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+
+  .planning-image-wrapper {
+    height: 280px !important;
+    min-height: 240px !important;
+  }
+
+  /* Footer Stacking */
+  .footer-two-grid, .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+    gap: 12px 20px !important;
+  }
+}
+
+/* ==========================================================================
+   SMARTPHONE BREAKPOINT (max-width: 767px)
+   ========================================================================== */
+@media screen and (max-width: 767px) {
+  /* Container padding */
+  .w-container, .container-one {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  /* Hero Section */
+  .home-four-hero {
+    height: auto !important;
+    min-height: 520px !important;
+    padding: 90px 0 50px !important;
+  }
+
+  .home-four-hero-puzzle-wrapper {
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .home-four-content-block-container {
+    padding: 0 !important;
+  }
+
+  .home-four-content-block {
+    padding: 0 16px !important;
+  }
+
+  .home-four-content-block h1 {
+    font-size: 1.85rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .tag-two {
+    font-size: 0.82rem !important;
+    line-height: 1.4 !important;
+    padding: 6px 12px !important;
+  }
+
+  .home-four-hero-description {
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 24px !important;
+    padding: 0 !important;
+  }
+
+  /* Hero Buttons Stack Vertically */
+  .home-one-hero-btn-flex,
+  .home-four-flex-center {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+
+  .home-one-hero-btn-flex .body-button {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 14px 20px !important;
+    font-size: 0.95rem !important;
+  }
+
+  /* Headings across all sections */
+  .heading-2 {
+    font-size: 1.85rem !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Services Grid on Mobile (Single Column, Highly Legible) */
+  .home-four-services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+
+  .home-four-service-card {
+    height: 380px !important;
+    width: 100% !important;
+  }
+
+  .home-four-service-card .cover-image {
+    height: 100% !important;
+  }
+
+  /* On Touch Devices: Keep Service Card Content & Button PERMANENTLY VISIBLE */
+  .home-four-service-card .home-four-services-card-content {
+    transform: translateY(0) !important;
+    padding: 20px 18px !important;
+    background: linear-gradient(0deg, rgba(5, 19, 41, 0.95) 0%, rgba(5, 19, 41, 0.72) 70%, rgba(5, 19, 41, 0) 100%) !important;
+  }
+
+  .home-four-service-card .inline-btn-flex {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    margin-top: 8px !important;
+  }
+
+  .service-one-text-block {
+    font-size: 1.2rem !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Two Central Action Buttons on Service Section */
+  .talk-flex-copy .wf-layout-layout {
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .talk-flex-copy .body-button {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* About Us Section Elements */
+  .home-four-about-us-flex-two {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .home-four-about-us-flex-image {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .home-four-about-us-flex-image img {
+    width: 100% !important;
+    height: 180px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+  }
+
+  .home-four-about-us-flex {
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .home-four-about-us-text-block {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Projects Carousel on Mobile */
+  .home-three-project-loop {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+  }
+
+  .home-three-project-flex {
+    gap: 14px !important;
+    padding: 0 16px 16px 16px !important;
+  }
+
+  .home-three-project-section-item {
+    min-width: 82vw !important;
+    max-width: 320px !important;
+    scroll-snap-align: center !important;
+    border-radius: 8px !important;
+  }
+
+  .home-three-project-section-item img {
+    height: 360px !important;
+  }
+
+  /* Planning Accordion */
+  .home-four-planing-content-block h2 {
+    font-size: 1.8rem !important;
+  }
+
+  /* Contact Form 2-Column Inputs to 1-Column */
+  .contact-input-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  form div[style*="gridTemplateColumns: '1fr 1fr'"],
+  form div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Universal Button Size for Thumb Tap */
+  .body-button, .button-2 {
+    min-height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* ISO Badge in Footer */
+  .cell-2 a img {
+    max-width: 180px !important;
+    height: auto !important;
+  }
+}
+
+/* ==========================================================================
+   EXTRA SMALL DEVICES (max-width: 380px)
+   ========================================================================== */
+@media screen and (max-width: 380px) {
+  .home-four-content-block h1 {
+    font-size: 1.6rem !important;
+  }
+
+  .home-three-project-section-item {
+    min-width: 88vw !important;
+  }
+
+  .creative-image-block {
+    height: 280px !important;
+  }
+}

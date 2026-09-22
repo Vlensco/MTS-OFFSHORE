@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 220" width="580" height="220">
+  <g transform="translate(10, 10)">
+    <!-- Hexagonal Isometric Offshore Mark in White -->
+    <g transform="translate(10, 0)">
+      <polygon points="50,10 90,10 160,100 120,100" fill="#ffffff"/>
+      <polygon points="90,10 130,10 200,100 160,100" fill="#e2f0fa"/>
+      <polygon points="10,60 50,10 90,10 50,60" fill="#cbdde9"/>
+      <polygon points="50,110 90,110 160,200 120,200" fill="#a0c2dc"/>
+      <polygon points="90,110 130,110 200,200 160,200" fill="#b9d5ec"/>
+      <polygon points="10,160 50,110 90,110 50,160" fill="#88b1d2"/>
+    </g>
+
+    <!-- Typography in White: MTS -->
+    <text x="245" y="112" font-family="'Montserrat', 'Arial Black', sans-serif" font-weight="900" font-size="102" fill="#ffffff" letter-spacing="2">MTS</text>
+    <text x="248" y="165" font-family="'Montserrat', sans-serif" font-weight="600" font-size="30" fill="#cbdde9" letter-spacing="3.5">SURFACE | SUBSEA | O&amp;M</text>
+  </g>
+</svg>
