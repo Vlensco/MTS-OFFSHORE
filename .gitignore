@@ -39,4 +39,5 @@ Thumbs.db
 # Local media & references (not needed in production)
 /Video/
 /panmarina/
+/legacy_html/
 
