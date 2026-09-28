@@ -1,9 +1,36 @@
 import ProjectsPortfolioGrid from '../../components/ProjectsPortfolioGrid';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mtsoffshore.com';
+
 export const metadata = {
-  title: 'Our Featured Projects | MTS OFFSHORE',
+  title: 'Featured Offshore Projects & Track Record',
   description:
-    'Explore our comprehensive track record of successfully delivered offshore construction, SPM terminal overhauls, subsea flowlines, and marine campaigns worldwide.',
+    'Explore our proven track record delivering offshore construction, SPM terminal overhauls, subsea flowlines, and marine campaigns worldwide.',
+  keywords: [
+    'offshore projects',
+    'subsea project portfolio',
+    'SPM overhaul case studies',
+    'Kumul Marine Terminal',
+    'Santos projects',
+    'offshore track record',
+  ],
+  alternates: {
+    canonical: '/project',
+  },
+  openGraph: {
+    title: 'Featured Offshore Projects | MTS OFFSHORE Group',
+    description:
+      'Proven execution in complex offshore environments: subsea flowlines, CALM buoy turnarounds, and platform rejuvenations.',
+    url: `${SITE_URL}/project`,
+    images: [
+      {
+        url: '/assets/img/6886b9bc620916f9026a9219_Birdseye_Deck_View_Compressed.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'MTS Offshore Featured Projects',
+      },
+    ],
+  },
 };
 
 export default function ProjectPage() {

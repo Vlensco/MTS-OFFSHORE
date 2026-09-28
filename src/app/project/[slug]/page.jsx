@@ -9,14 +9,50 @@ export async function generateStaticParams() {
   }));
 }
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mtsoffshore.com';
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const project = PROJECTS.find((p) => p.slug === slug);
   if (!project) return { title: 'Project Not Found | MTS OFFSHORE' };
 
+  const imageUrl = project.image.startsWith('http') ? project.image : `${SITE_URL}${project.image}`;
+
   return {
-    title: `${project.title} | MTS OFFSHORE`,
-    description: project.scope,
+    title: `${project.title} - ${project.service}`,
+    description: project.scope?.slice(0, 160) || `Project details for ${project.title}`,
+    keywords: [
+      project.title,
+      project.service,
+      project.client,
+      project.location,
+      'offshore project',
+      'subsea installation',
+      'marine engineering',
+    ],
+    alternates: {
+      canonical: `/project/${slug}`,
+    },
+    openGraph: {
+      title: `${project.title} | MTS OFFSHORE`,
+      description: project.scope?.slice(0, 200),
+      url: `${SITE_URL}/project/${slug}`,
+      type: 'article',
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: project.title,
+      description: project.scope?.slice(0, 160),
+      images: [imageUrl],
+    },
   };
 }
 
@@ -28,8 +64,41 @@ export default async function ProjectDetailPage({ params }) {
     notFound();
   }
 
+  const projectSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: project.title,
+    description: project.scope,
+    image: project.image.startsWith('http') ? project.image : `${SITE_URL}${project.image}`,
+    author: {
+      '@type': 'Corporation',
+      name: 'MTS OFFSHORE Group',
+    },
+    publisher: {
+      '@type': 'Corporation',
+      name: 'MTS OFFSHORE Group',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/assets/images/mts_logo.png`,
+      },
+    },
+    datePublished: `${project.year}-01-01`,
+    about: {
+      '@type': 'Service',
+      name: project.service,
+      customer: {
+        '@type': 'Organization',
+        name: project.client,
+      },
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
+      />
       {/* Project Top Title Banner */}
       <div style={{ backgroundColor: '#ffffff', padding: '48px 0 28px', borderBottom: '1px solid #eef2f6' }}>
         <div className="w-layout-blockcontainer container-one w-container">
