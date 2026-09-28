@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { saveInquiry } from '../../../lib/db';
+import { sendContactNotification } from '../../../lib/mailer';
 
 export async function POST(request) {
   try {
@@ -22,19 +23,28 @@ export async function POST(request) {
       );
     }
 
-    const saved = await saveInquiry({
+    const payload = {
       name: name.trim(),
       email: email.trim().toLowerCase(),
       phone: phone ? phone.trim() : null,
       company: company ? company.trim() : null,
       message: message.trim(),
       service_interest: service_interest ? service_interest.trim() : 'General Inquiry',
+    };
+
+    // 1. Save to Neon PostgreSQL database
+    const saved = await saveInquiry(payload);
+
+    // 2. Send email notification to enquiries@mtsoffshore.com
+    sendContactNotification(payload).catch((mailErr) => {
+      console.warn('Background mailer notice:', mailErr.message);
     });
 
     return NextResponse.json(
       {
         success: true,
-        message: 'Thank you for reaching out to MTS OFFSHORE. Our team will review your inquiry and get in touch promptly.',
+        message:
+          'Thank you for reaching out to MTS OFFSHORE. Our team will review your inquiry and get in touch promptly.',
         inquiryId: saved.id,
       },
       { status: 201 }
@@ -43,7 +53,8 @@ export async function POST(request) {
     console.error('Contact API Error:', error);
     return NextResponse.json(
       {
-        error: 'Failed to process inquiry. Please try again or contact us directly at info@mtsoffshore.com.',
+        error:
+          'Failed to process inquiry. Please try again or contact us directly at enquiries@mtsoffshore.com.',
       },
       { status: 500 }
     );
