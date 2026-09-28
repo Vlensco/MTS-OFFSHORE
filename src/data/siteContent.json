@@ -1,14 +1,4 @@
 {
-  "general": {
-    "phone": "+65 6235 0000",
-    "address": "MTS Group Pte Ltd, Singapore & MTS Indonesia, Jakarta",
-    "tagline": "Specialists in Offshore Construction & Project Management",
-    "siteName": "MTS OFFSHORE Group",
-    "copyright": "© 2026 MTS OFFSHORE Group. All rights reserved.",
-    "contactEmail": "commercial@mtsoffshore.com",
-    "inquiryEmail": "info@mtsoffshore.com",
-    "emergencyPhone": "+65 9123 4567"
-  },
   "home": {
     "hero": {
       "tag": "asd",
@@ -104,6 +94,22 @@
       "title": "Projects"
     }
   },
+  "general": {
+    "phone": "+65 6235 0000",
+    "address": "MTS Group Pte Ltd, Singapore & MTS Indonesia, Jakarta",
+    "tagline": "Specialists in Offshore Construction & Project Management",
+    "siteName": "MTS OFFSHORE Group",
+    "copyright": "© 2026 MTS OFFSHORE Group. All rights reserved.",
+    "contactEmail": "commercial@mtsoffshore.com",
+    "inquiryEmail": "info@mtsoffshore.com",
+    "emergencyPhone": "+65 9123 4567"
+  },
+  "spmPage": {
+    "heroBg": "/assets/images/mts_spm_epic.jpg",
+    "heroTag": "SPECIALIZED EXPERTISE",
+    "heroDesc": "World-class CALM buoy installation, overhaul, maintenance, subsea hose replacement, and mooring telemetry services.",
+    "heroTitle": "Single Point Mooring (SPM) Systems"
+  },
   "aboutPage": {
     "heroBg": "/assets/images/mts_hero_cinematic.jpg",
     "heroTag": "ABOUT MTS OFFSHORE",
@@ -115,28 +121,22 @@
     "heroTitle": "Fueling The Future Of Offshore Construction",
     "storyTitle": "Over 30 Years of Maritime Excellence"
   },
+  "contactPage": {
+    "heroBg": "/assets/images/mts_hero_cinematic.jpg",
+    "heroTag": "GET IN TOUCH",
+    "heroDesc": "Discuss your offshore construction, SPM maintenance, or project management requirements with our senior engineers.",
+    "heroTitle": "Contact Our Offshore Team"
+  },
   "servicesPage": {
     "heroBg": "/assets/images/hero-offshore.jpg",
     "heroTag": "MTS OFFSHORE CAPABILITIES",
     "heroDesc": "Specialized marine engineering, offshore construction, and project management capabilities tailored to complex offshore environments.",
     "heroTitle": "Our Core Offshore Services"
   },
-  "spmPage": {
-    "heroBg": "/assets/images/mts_spm_epic.jpg",
-    "heroTag": "SPECIALIZED EXPERTISE",
-    "heroDesc": "World-class CALM buoy installation, overhaul, maintenance, subsea hose replacement, and mooring telemetry services.",
-    "heroTitle": "Single Point Mooring (SPM) Systems"
-  },
   "advantagePage": {
     "heroBg": "/assets/images/hero_barge.jpg",
     "heroTag": "WHY CHOOSE MTS",
     "heroDesc": "Lean operations, elite marine engineers, unmatched safety record, and agile offshore mobilization capabilities.",
     "heroTitle": "Our Competitive Advantage"
-  },
-  "contactPage": {
-    "heroBg": "/assets/images/mts_hero_cinematic.jpg",
-    "heroTag": "GET IN TOUCH",
-    "heroDesc": "Discuss your offshore construction, SPM maintenance, or project management requirements with our senior engineers.",
-    "heroTitle": "Contact Our Offshore Team"
   }
 }
