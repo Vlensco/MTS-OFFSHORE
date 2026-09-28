@@ -27,6 +27,10 @@ export default function Header() {
     { name: 'Contact Us', href: '/contact-us' },
   ];
 
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
+
   return (
     <header
       className={`header-three header-two ${isScrolled ? 'is-scrolled' : ''}`}
@@ -67,17 +71,62 @@ export default function Header() {
       </section>
 
       {/* Main Navbar */}
-      <div className="w-layout-blockcontainer container-one home-one-header-one-flex w-container">
+      <div
+        className="w-layout-blockcontainer container-one home-one-header-one-flex w-container"
+        style={{
+          height: isScrolled ? '64px' : '70px',
+          minHeight: isScrolled ? '64px' : '70px',
+          maxHeight: isScrolled ? '64px' : '70px',
+          paddingTop: 0,
+          paddingBottom: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          transition: 'height 0.25s ease',
+          position: 'relative',
+        }}
+      >
         {/* Logo */}
-        <div className="div-block-3">
-          <Link href="/" className="link-block w-inline-block">
+        <div
+          className="div-block-3"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            height: '100%',
+            width: isScrolled ? '150px' : '170px',
+            position: 'relative',
+            flexShrink: 0,
+            transition: 'width 0.25s ease',
+          }}
+        >
+          <Link
+            href="/"
+            className="link-block w-inline-block"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              textDecoration: 'none',
+              position: 'absolute',
+              left: 0,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              zIndex: 30,
+            }}
+          >
             <img
-              src="/assets/images/mts_logo.svg"
-              alt="MTS Logo"
-              width={200}
-              height={52}
+              src="/assets/images/mts_logo.png"
+              alt="MTS Offshore - Marine Terminal Services"
+              width={300}
+              height={190}
               className="image-3"
-              style={{ objectFit: 'contain', height: 'auto', maxHeight: '50px' }}
+              style={{
+                objectFit: 'contain',
+                height: isScrolled ? '82px' : '98px',
+                width: 'auto',
+                display: 'block',
+                filter: 'drop-shadow(0 3px 8px rgba(0, 0, 0, 0.14))',
+                transition: 'height 0.25s ease',
+              }}
             />
           </Link>
         </div>

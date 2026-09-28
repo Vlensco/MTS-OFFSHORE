@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { PROJECTS } from '../data/projectsData';
+import { PROJECTS as DEFAULT_PROJECTS } from '../data/projectsData';
 
 function PortfolioCard({ project }) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0, active: false });
@@ -109,11 +109,24 @@ function PortfolioCard({ project }) {
 }
 
 export default function ProjectsPortfolioGrid() {
+  const [projectsList, setProjectsList] = useState(DEFAULT_PROJECTS);
+
+  useEffect(() => {
+    fetch('/api/projects')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.projects && data.projects.length > 0) {
+          setProjectsList(data.projects);
+        }
+      })
+      .catch((err) => console.warn('Could not load dynamic projects:', err));
+  }, []);
+
   return (
     <section style={{ backgroundColor: '#eef2f6', padding: '60px 0 100px' }}>
       <div className="w-layout-blockcontainer container-one w-container">
         <div className="latest-projects-grid" style={{ gap: '26px' }}>
-          {PROJECTS.map((project) => (
+          {projectsList.map((project) => (
             <PortfolioCard key={project.slug} project={project} />
           ))}
         </div>

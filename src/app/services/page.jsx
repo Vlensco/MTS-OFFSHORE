@@ -2,29 +2,21 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useSiteContent } from '../../context/ContentContext';
 
 export default function ServicesPage() {
   const capRef = useRef(null);
   const [isCapAnimated, setIsCapAnimated] = useState(false);
+  const { content } = useSiteContent();
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsCapAnimated(true);
-        }
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
-    );
+  const servicesPage = content?.servicesPage || {};
+  const homeServices = content?.home?.services || {};
 
-    if (capRef.current) {
-      observer.observe(capRef.current);
-    }
+  const heroTag = servicesPage.heroTag || 'Our Services';
+  const heroTitle = servicesPage.heroTitle || 'Best In Class Offshore Construction & Project Management Services';
+  const heroDesc = servicesPage.heroDesc || 'MTS Group, boasting over 50 years of collaboration with top-tier EPC providers, offers flexible, agile solutions to asset owners. Our approach combines seasoned expertise with innovative practices, ensuring efficient, tailored results in offshore construction and project management.';
 
-    return () => observer.disconnect();
-  }, []);
-
-  const serviceOfferings = [
+  const defaultOfferings = [
     {
       tag: 'PMC',
       title: 'Project Management & Consultancy',
@@ -51,6 +43,25 @@ export default function ServicesPage() {
     },
   ];
 
+  const serviceOfferings = homeServices.items?.length ? homeServices.items : defaultOfferings;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsCapAnimated(true);
+        }
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    if (capRef.current) {
+      observer.observe(capRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       {/* SECTION 1: Top Hero Header */}
@@ -60,11 +71,11 @@ export default function ServicesPage() {
             {/* Left Title Column */}
             <div className="service-one-hero-title-block">
               <div className="service-one-tag-block">
-                <div className="tag change-weight-medium">Our Services</div>
+                <div className="tag change-weight-medium">{heroTag}</div>
               </div>
               <div className="overflow-hidden">
                 <h1 className="heading-3" style={{ fontSize: 'clamp(1.75rem, 2.5vw, 2.35rem)', fontWeight: 800, color: '#0c3247', lineHeight: '1.25', letterSpacing: '-0.015em', margin: '10px 0 0' }}>
-                  Best In Class Offshore Construction &amp; Project Management Services
+                  {heroTitle}
                 </h1>
               </div>
             </div>
@@ -72,7 +83,7 @@ export default function ServicesPage() {
             {/* Right Paragraph & Action Column */}
             <div className="service-one-hero-section-paragraph">
               <p className="padding-bottom-fifteen" style={{ fontSize: '1.02rem', lineHeight: '1.65', color: '#4a5568' }}>
-                MTS Group, boasting over 50 years of collaboration with top-tier EPC providers, offers flexible, agile solutions to asset owners. Our approach combines seasoned expertise with innovative practices, ensuring efficient, tailored results in offshore construction and project management.
+                {heroDesc}
               </p>
               <div className="btn-flex">
                 <Link

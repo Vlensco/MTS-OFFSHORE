@@ -1,12 +1,20 @@
+'use client';
+
 import Link from 'next/link';
 import ProjectsSection from '../../components/ProjectsSection';
-
-export const metadata = {
-  title: 'Our Advantage | MTS OFFSHORE Group',
-  description: 'Built On Experience. Driven By Performance. MTS OFFSHORE delivers world-class offshore project management, T&I, and subsea construction.',
-};
+import { useSiteContent } from '../../context/ContentContext';
 
 export default function OurAdvantagePage() {
+  const { content } = useSiteContent();
+  const advantagePage = content?.advantagePage || {};
+
+  const heroTag = advantagePage.heroTag || 'OUR ADVANTAGE';
+  const heroTitle = advantagePage.heroTitle || 'Built On Experience.\nDriven By Performance.';
+  const heroDesc =
+    advantagePage.heroDesc ||
+    'MTS OFFSHORE Group delivers world-class offshore project management, transport and installation (T&I), and subsea construction services, backed by over 50 years of Tier-1 leadership experience.';
+  const heroBg = advantagePage.heroBg || '/assets/images/mts_hero_cinematic.jpg';
+
   return (
     <>
       {/* Advantage Hero */}
@@ -14,8 +22,7 @@ export default function OurAdvantagePage() {
         <div
           className="home-four-hero-puzzle-wrapper"
           style={{
-            backgroundImage:
-              'linear-gradient(rgba(5, 19, 41, 0.5), rgba(5, 19, 41, 0.7)), url("/assets/images/mts_hero_cinematic.jpg")',
+            backgroundImage: `linear-gradient(rgba(5, 19, 41, 0.5), rgba(5, 19, 41, 0.7)), url("${heroBg}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -23,13 +30,13 @@ export default function OurAdvantagePage() {
           <div className="home-four-content-block-container" style={{ paddingTop: '80px' }}>
             <div className="home-four-content-block">
               <div className="tag-two-block padding-bottom-ten">
-                <div className="tag-two">OUR ADVANTAGE</div>
+                <div className="tag-two">{heroTag}</div>
               </div>
-              <h1 className="text-color-white text-center padding-bottom-ten">
-                Built On Experience.<br />Driven By Performance.
+              <h1 className="text-color-white text-center padding-bottom-ten" style={{ whiteSpace: 'pre-line' }}>
+                {heroTitle}
               </h1>
               <p className="home-four-hero-description text-center padding-bottom-twenty light-color-text" style={{ maxWidth: '740px', margin: '0 auto 24px' }}>
-                MTS OFFSHORE Group delivers world-class offshore project management, transport and installation (T&amp;I), and subsea construction services, backed by over 50 years of Tier-1 leadership experience.
+                {heroDesc}
               </p>
               <div className="home-one-hero-btn-flex home-four-flex-center">
                 <Link href="/contact-us" className="body-button bg-dark-pmg-blue w-inline-block">

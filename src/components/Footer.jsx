@@ -1,26 +1,38 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
+
   return (
     <footer className="footer footer-blue">
       <div className="w-layout-blockcontainer container-one w-container">
         <div className="w-layout-grid footer-bottom-grid">
           {/* Col 1: Logo & Company Entity */}
-          <div className="footer-col-company" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '14px', textAlign: 'center' }}>
-            <Link href="/" className="panmarina-logo flex-center w-inline-block">
+          <div className="footer-col-company" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+            <Link href="/" className="panmarina-logo flex-center w-inline-block" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
               <img
-                src="/assets/images/mts_logo_white.svg"
-                alt="MTS Logo"
-                width={220}
-                height={58}
+                src="/assets/images/mts_logo.png"
+                alt="MTS Offshore - Marine Terminal Services"
+                width={260}
+                height={165}
                 className="image-2"
-                style={{ objectFit: 'contain', height: 'auto', maxHeight: '50px' }}
+                style={{
+                  objectFit: 'contain',
+                  height: '95px',
+                  maxHeight: '100px',
+                  width: 'auto',
+                  display: 'block',
+                  filter: 'drop-shadow(0 6px 16px rgba(0, 0, 0, 0.18))',
+                }}
               />
             </Link>
-            <div className="footer-text">
-              MTS Group Pte Ltd<br />
-              MTS Indonesia
-            </div>
           </div>
 
           {/* Col 2: Site Links with White Vertical Left/Right Borders */}

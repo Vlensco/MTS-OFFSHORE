@@ -2,8 +2,18 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useSiteContent } from '../../context/ContentContext';
 
 export default function SPMPage() {
+  const { content } = useSiteContent();
+  const spm = content?.spmPage || {};
+
+  const heroTag = spm.heroTag || 'SAFE, EFFICIENT & RELIABLE';
+  const heroTitle = spm.heroTitle || 'Single Point Mooring Systems';
+  const heroDesc =
+    spm.heroDesc ||
+    'MTS OFFSHORE Group delivers full-cycle Single Point Mooring (SPM) System solutions backed by more than 50 years of global experience. Our expertise spans the complete Engineering, Procurement, Construction and Installation (EPCI) of all SPM system types. We also provide comprehensive Operations & Maintenance (O&M) services, offering full maintenance, refurbishment, dry-docking, and inspection capabilities for SPM assets.';
+  const heroBg = spm.heroBg || '/assets/images/mts_spm_epic.jpg';
   // Intersection observers for creative image accent frames
   const [sec3Animated, setSec3Animated] = useState(false);
   const [sec4Animated, setSec4Animated] = useState(false);
@@ -159,19 +169,26 @@ export default function SPMPage() {
       {/* =========================================================================
           SECTION 1: HERO (SAFE, EFFICIENT & RELIABLE)
           ========================================================================= */}
-      <section className="spm-hero-section">
+      <section
+        className="spm-hero-section"
+        style={{
+          backgroundImage: `linear-gradient(rgba(5, 19, 41, 0.65), rgba(5, 19, 41, 0.8)), url("${heroBg}")`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
         <div className="w-layout-blockcontainer container-one w-container">
           <div className="spm-hero-content">
             <div className="spm-hero-tag">
-              SAFE, EFFICIENT &amp; RELIABLE
+              {heroTag}
             </div>
 
             <h1 className="spm-hero-title">
-              Single Point Mooring Systems
+              {heroTitle}
             </h1>
 
             <p className="spm-hero-desc">
-              MTS OFFSHORE Group delivers full-cycle Single Point Mooring (SPM) System solutions backed by more than 50 years of global experience. Our expertise spans the complete Engineering, Procurement, Construction and Installation (EPCI) of all SPM system types. We also provide comprehensive Operations &amp; Maintenance (O&amp;M) services, offering full maintenance, refurbishment, dry-docking, and inspection capabilities for SPM assets.
+              {heroDesc}
             </p>
 
             <div className="spm-hero-actions">

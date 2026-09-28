@@ -2,10 +2,31 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useSiteContent } from '../context/ContentContext';
 
 export default function AboutSection() {
   const creativeRef = useRef(null);
   const [isAnimated, setIsAnimated] = useState(false);
+  const { content } = useSiteContent();
+
+  const about = content?.home?.about || {};
+  const tag = about.tag || 'About Us';
+  const title = about.title || 'Offshore Construction Services';
+  const description =
+    about.description ||
+    "MTS OFFSHORE's operations span over three decades, successfully delivering complex marine projects across the Middle East, Europe, South East Asia and Oceania.";
+  const bullet1 = about.bullet1 || 'Expert Personnel and technical understanding';
+  const bullet2 = about.bullet2 || 'Outstanding Quality management and process control';
+  const bullet3 = about.bullet3 || 'Strong track record of safe and reliable delivery';
+  const missionTitle = about.missionTitle || 'Our Mission & Vision';
+  const missionDesc =
+    about.missionDesc ||
+    'Fueling the future of offshore construction. We are pioneers of turnkey offshore construction services that are flexible, agile, and cost-effective for global and regional operators.';
+  const thumbImage = about.thumbImage || '/assets/images/about_thumb.jpg';
+  const mainImage = about.mainImage || '/assets/images/about_jacket_portrait.jpg';
+  const badgeNumber = about.badgeNumber || '50+';
+  const badgeText = about.badgeText || 'Years Of Management Experience';
+  const badgeImage = about.badgeImage || '/assets/img/65d42addbadc4b36cf019683_20200121_134838.jpg';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,11 +51,9 @@ export default function AboutSection() {
         <div className="home-four-about-us-main">
           {/* Left Content Column */}
           <div className="home-four-about-us-content-block">
-            <div className="single-line-tag">About Us</div>
-            <h2 className="heading-2">Offshore Construction Services</h2>
-            <p className="padding-bottom-three">
-              MTS OFFSHORE&apos;s operations span over three decades, successfully delivering complex marine projects across the Middle East, Europe, South East Asia and Oceania.
-            </p>
+            <div className="single-line-tag" suppressHydrationWarning>{tag}</div>
+            <h2 className="heading-2" suppressHydrationWarning>{title}</h2>
+            <p className="padding-bottom-three" suppressHydrationWarning>{description}</p>
 
             {/* Checklist items */}
             <div className="home-four-about-us-flex padding-bottom-fifteen">
@@ -44,9 +63,7 @@ export default function AboutSection() {
                 width={21}
                 height={20}
               />
-              <div className="home-four-about-us-text-block">
-                Expert Personnel and technical understanding
-              </div>
+              <div className="home-four-about-us-text-block">{bullet1}</div>
             </div>
 
             <div className="home-four-about-us-flex padding-bottom-fifteen">
@@ -56,9 +73,7 @@ export default function AboutSection() {
                 width={21}
                 height={20}
               />
-              <div className="home-four-about-us-text-block">
-                Outstanding Quality management and process control
-              </div>
+              <div className="home-four-about-us-text-block">{bullet2}</div>
             </div>
 
             <div className="home-four-about-us-flex padding-bottom-thirty-five">
@@ -68,16 +83,14 @@ export default function AboutSection() {
                 width={21}
                 height={20}
               />
-              <div className="home-four-about-us-text-block">
-                Strong track record of safe and reliable delivery
-              </div>
+              <div className="home-four-about-us-text-block">{bullet3}</div>
             </div>
 
             {/* Mission & Vision Flex */}
             <div className="home-four-about-us-flex-two padding-bottom-fourty">
               <div className="home-four-about-us-flex-image">
                 <img
-                  src="/assets/images/about_thumb.jpg"
+                  src={thumbImage}
                   alt="Offshore Construction Operations"
                   width={226}
                   height={149}
@@ -85,10 +98,8 @@ export default function AboutSection() {
                 />
               </div>
               <div className="home-four-about-us-flex-content">
-                <div className="heading-five padding-bottom-ten">Our Mission &amp; Vision</div>
-                <p className="paragraph-6">
-                  Fueling the future of offshore construction. We are pioneers of turnkey offshore construction services that are flexible, agile, and cost-effective for global and regional operators.
-                </p>
+                <div className="heading-five padding-bottom-ten">{missionTitle}</div>
+                <p className="paragraph-6">{missionDesc}</p>
               </div>
             </div>
 
@@ -101,17 +112,24 @@ export default function AboutSection() {
 
           {/* Right Creative Visual Column */}
           <div ref={creativeRef} className="home-four-about-us-creative" style={{ position: 'relative' }}>
-            {/* Animated blue decorative border (moves out on scroll then stays) */}
+            {/* Animated blue decorative border */}
             <div className={`home-one-about-yellow-bg ${isAnimated ? 'is-animated' : 'is-initial'}`} />
 
             <div className="creative-image-block" style={{ position: 'relative', zIndex: 1, height: '100%' }}>
               <img
-                src="/assets/images/about_jacket_portrait.jpg"
+                src={mainImage}
                 alt="Offshore Jacket Installation"
                 width={496}
                 height={616}
                 className="responsive-full-width cover-image image-shadow"
-                style={{ borderRadius: '12px', objectFit: 'cover', display: 'block', width: '100%', height: '100%', aspectRatio: '3/4' }}
+                style={{
+                  borderRadius: '12px',
+                  objectFit: 'cover',
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
+                  aspectRatio: '3/4',
+                }}
               />
             </div>
 
@@ -128,16 +146,21 @@ export default function AboutSection() {
               }}
             >
               <img
-                src="/assets/img/65d42addbadc4b36cf019683_20200121_134838.jpg"
+                src={badgeImage}
                 alt="Offshore Management Action"
                 width={202}
                 height={151}
                 style={{ borderRadius: '6px', objectFit: 'cover' }}
               />
               <div className="experience-content-block margin-top-twenty-five">
-                <div className="heading-five" style={{ fontWeight: '800', fontSize: '2rem', color: '#0f172a' }}>50+</div>
-                <div className="heading-six width-one-twenty-four" style={{ fontWeight: '700', fontSize: '0.95rem', color: '#0f172a', lineHeight: '1.3' }}>
-                  Years Of Management Experience
+                <div className="heading-five" style={{ fontWeight: '800', fontSize: '2rem', color: '#0f172a' }}>
+                  {badgeNumber}
+                </div>
+                <div
+                  className="heading-six width-one-twenty-four"
+                  style={{ fontWeight: '700', fontSize: '0.95rem', color: '#0f172a', lineHeight: '1.3', width: 'auto', maxWidth: '200px' }}
+                >
+                  {badgeText}
                 </div>
               </div>
             </div>
@@ -147,4 +170,3 @@ export default function AboutSection() {
     </section>
   );
 }
-

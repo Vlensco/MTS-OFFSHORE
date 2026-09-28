@@ -6,6 +6,10 @@ import { usePathname } from 'next/navigation';
 export default function TextRevealObserver() {
   const pathname = usePathname();
 
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
+
   useEffect(() => {
     // Select headers, tags, key paragraphs, and cards across all pages
     const selectors = [

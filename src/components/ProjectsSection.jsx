@@ -2,9 +2,24 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { PROJECTS } from '../data/projectsData';
+import { PROJECTS as DEFAULT_PROJECTS } from '../data/projectsData';
+import { useSiteContent } from '../context/ContentContext';
 
 export default function ProjectsSection() {
+  const { content } = useSiteContent();
+  const [projectsList, setProjectsList] = useState(DEFAULT_PROJECTS);
+
+  useEffect(() => {
+    fetch('/api/projects')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.projects && data.projects.length > 0) {
+          setProjectsList(data.projects);
+        }
+      })
+      .catch((err) => console.warn('Could not load dynamic projects:', err));
+  }, []);
+
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -121,9 +136,12 @@ export default function ProjectsSection() {
   };
 
   const activeIndex = Math.min(
-    PROJECTS.length,
-    Math.max(1, Math.round((scrollProgress / 100) * (PROJECTS.length - 1)) + 1)
+    projectsList.length,
+    Math.max(1, Math.round((scrollProgress / 100) * (projectsList.length - 1)) + 1)
   );
+
+  const projectsTag = content?.home?.projectsSection?.tag || 'Featured Work';
+  const projectsTitle = content?.home?.projectsSection?.title || 'Projects';
 
   return (
     <section className="home-three-project-section" style={{ backgroundColor: '#ffffff', padding: '70px 0 80px 0' }}>
@@ -131,8 +149,8 @@ export default function ProjectsSection() {
       <div className="home-three-project-section-container">
         <div className="projects-header-flex">
           <div>
-            <div className="projects-subtitle">Featured Work</div>
-            <h2 className="heading-2" style={{ margin: 0, lineHeight: 1.15 }}>Projects</h2>
+            <div className="projects-subtitle">{projectsTag}</div>
+            <h2 className="heading-2" style={{ margin: 0, lineHeight: 1.15 }}>{projectsTitle}</h2>
           </div>
 
           <div className="projects-nav-controls">
@@ -168,13 +186,33 @@ export default function ProjectsSection() {
       <div
         ref={scrollRef}
         className={`home-three-project-loop ${isDragging ? 'is-dragging' : ''}`}
+        style={{
+          width: '100%',
+          overflowX: 'auto',
+          overflowY: 'hidden',
+          display: 'block',
+          WebkitOverflowScrolling: 'touch',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+        }}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUpOrLeave}
         onMouseLeave={handleMouseUpOrLeave}
       >
-        <div className="projects-scroll-track home-three-project-flex">
-          {PROJECTS.map((proj) => (
+        <div
+          className="projects-scroll-track home-three-project-flex"
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'nowrap',
+            gap: '24px',
+            width: 'max-content',
+            paddingLeft: 'max(20px, calc((100vw - 1290px) / 2 + 15px))',
+            paddingRight: 'max(20px, calc((100vw - 1290px) / 2 + 15px))',
+          }}
+        >
+          {projectsList.map((proj) => (
             <Link
               key={proj.slug}
               href={`/project/${proj.slug}`}
@@ -182,6 +220,18 @@ export default function ProjectsSection() {
               className="home-three-project-section-item project-card-interactive"
               onClickCapture={handleItemClick}
               draggable={false}
+              style={{
+                flex: '0 0 380px',
+                width: '380px',
+                minWidth: '380px',
+                maxWidth: '380px',
+                position: 'relative',
+                borderRadius: '8px',
+                overflow: 'hidden',
+                display: 'block',
+                textDecoration: 'none',
+                backgroundColor: '#0c3247',
+              }}
             >
               <img
                 height={609}
@@ -190,12 +240,27 @@ export default function ProjectsSection() {
                 src={proj.image}
                 className="cover-image"
                 draggable={false}
-                style={{ width: '100%', height: '420px', objectFit: 'cover' }}
+                style={{ width: '100%', height: '420px', objectFit: 'cover', display: 'block' }}
               />
               {/* On-Hover Box (Photo 1 Reference) */}
-              <div className="home-three-project-on-hover">
-                <div className="home-three-project-black-line" />
-                <h3 className="heading-five change-weight-medium underline-off">
+              <div
+                className="home-three-project-on-hover"
+                style={{
+                  backgroundColor: '#ffffff',
+                  position: 'absolute',
+                  bottom: '30px',
+                  left: '0',
+                  padding: '20px 24px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '14px',
+                  maxWidth: '88%',
+                  boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
+                  zIndex: 10,
+                }}
+              >
+                <div className="home-three-project-black-line" style={{ backgroundColor: '#f6b61b', width: '40px', height: '3px', flexShrink: 0 }} />
+                <h3 className="heading-five change-weight-medium underline-off" style={{ margin: 0, fontSize: '1.05rem', fontWeight: 700, color: '#0f172a', lineHeight: 1.35 }}>
                   {proj.title}
                 </h3>
               </div>
@@ -223,7 +288,7 @@ export default function ProjectsSection() {
             }}
           />
         </div>
-        <span className="projects-progress-counter">0{PROJECTS.length}</span>
+        <span className="projects-progress-counter">0{projectsList.length}</span>
       </div>
 
       {/* View All Button */}

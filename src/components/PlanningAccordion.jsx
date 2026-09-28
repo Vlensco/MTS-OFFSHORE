@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useSiteContent } from '../context/ContentContext';
 
-const PLANNING_ITEMS = [
+const DEFAULT_PLANNING_ITEMS = [
   {
     id: 1,
     title: 'Project Planning & FEED',
@@ -28,10 +29,17 @@ const PLANNING_ITEMS = [
 ];
 
 export default function PlanningAccordion() {
-  const [hoveredItem, setHoveredItem] = useState(1);
+  const { content } = useSiteContent();
+  const planning = content?.home?.planning || {};
+  const items = planning.items && planning.items.length > 0 ? planning.items : DEFAULT_PLANNING_ITEMS;
+
+  const [hoveredItem, setHoveredItem] = useState(items[0]?.id || 1);
+
+  const tag = planning.tag || 'Work Process';
+  const title = planning.title || 'Precision Planning & Offshore Delivery';
 
   return (
-    <section className="home-four-planing" style={{ padding: '90px 0', backgroundColor: '#f8fafc' }}>
+    <section className="home-four-planing" style={{ padding: '90px 0', backgroundColor: '#f8fafc', display: 'block' }}>
       <div className="w-layout-blockcontainer home-four-planing-container w-container">
         <div className="home-four-planing-flex" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 290px), 1fr))', gap: '36px', alignItems: 'center' }}>
           {/* Visual Showcase Side */}
@@ -48,7 +56,7 @@ export default function PlanningAccordion() {
                 height: '480px',
               }}
             >
-              {PLANNING_ITEMS.map((item) => (
+              {items.map((item) => (
                 <img
                   key={item.id}
                   src={item.image}
@@ -96,76 +104,63 @@ export default function PlanningAccordion() {
           {/* Accordion / Interactive List Side */}
           <div className="home-four-planing-content-block">
             <div style={{ marginBottom: '28px' }}>
-              <div className="single-line-tag">
-                Operational Excellence
+              <div className="single-line-tag" suppressHydrationWarning>
+                {tag}
               </div>
-              <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '2.4rem', fontWeight: '800', color: '#0c3247', lineHeight: '1.2' }}>
-                Structured Project Lifecycle
+              <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '2.4rem', fontWeight: '800', color: '#0c3247', lineHeight: '1.2' }} suppressHydrationWarning>
+                {title}
               </h2>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-              {PLANNING_ITEMS.map((item) => {
+              {items.map((item) => {
                 const isActive = hoveredItem === item.id;
                 return (
                   <div
                     key={item.id}
                     onMouseEnter={() => setHoveredItem(item.id)}
                     style={{
-                      backgroundColor: isActive ? '#ffffff' : '#ffffff',
+                      backgroundColor: '#ffffff',
                       border: isActive ? '2px solid #0072ce' : '1px solid #e2e8f0',
                       borderRadius: '10px',
                       padding: '24px 28px',
                       cursor: 'pointer',
                       transition: 'all 0.3s ease',
-                      boxShadow: isActive ? '0 12px 28px rgba(0, 114, 206, 0.12)' : '0 2px 8px rgba(0,0,0,0.02)',
+                      boxShadow: isActive ? '0 12px 28px rgba(0, 114, 206, 0.12)' : '0 2px 6px rgba(0,0,0,0.03)',
                       transform: isActive ? 'translateX(6px)' : 'none',
                     }}
                   >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
                       <span
                         style={{
+                          backgroundColor: isActive ? '#e0f2fe' : '#f1f5f9',
+                          color: isActive ? '#0284c7' : '#64748b',
                           fontSize: '0.75rem',
-                          fontWeight: '800',
+                          fontWeight: '700',
                           padding: '4px 10px',
                           borderRadius: '4px',
-                          backgroundColor: isActive ? '#e0f2fe' : '#f1f5f9',
-                          color: isActive ? '#0369a1' : '#64748b',
-                          letterSpacing: '1px',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.05em',
                         }}
                       >
                         {item.badge}
                       </span>
-                      <Link href="/project" style={{ textDecoration: 'none' }}>
-                        <div
-                          style={{
-                            width: '32px',
-                            height: '32px',
-                            borderRadius: '50%',
-                            backgroundColor: isActive ? '#0072ce' : '#f1f5f9',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            color: isActive ? '#ffffff' : '#64748b',
-                            fontSize: '14px',
-                            fontWeight: 'bold',
-                            transition: 'all 0.2s',
-                          }}
-                        >
-                          →
-                        </div>
-                      </Link>
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke={isActive ? '#0072ce' : '#94a3b8'}
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        style={{ transition: 'transform 0.3s ease', transform: isActive ? 'rotate(90deg)' : 'none' }}
+                      >
+                        <polyline points="9 18 15 12 9 6" />
+                      </svg>
                     </div>
 
-                    <h3
-                      style={{
-                        fontFamily: 'Montserrat, sans-serif',
-                        fontSize: '1.25rem',
-                        fontWeight: '700',
-                        color: isActive ? '#0c3247' : '#1e293b',
-                        marginBottom: '8px',
-                      }}
-                    >
+                    <h3 style={{ fontSize: '1.2rem', fontWeight: '700', color: '#0f172a', margin: '0 0 6px 0', fontFamily: 'Montserrat, sans-serif' }}>
                       {item.title}
                     </h3>
                     <p style={{ color: '#64748b', fontSize: '0.92rem', lineHeight: '1.6', margin: 0 }}>

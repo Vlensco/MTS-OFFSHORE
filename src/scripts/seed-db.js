@@ -2,10 +2,15 @@ const { Pool } = require('pg');
 const fs = require('fs');
 const path = require('path');
 
+const dbUrl =
+  process.env.DATABASE_URL ||
+  'postgresql://neondb_owner:npg_B3vihMmfdY7b@ep-shy-moon-b3crf0cn-pooler.c-4.ap-southeast-1.aws.neon.tech/neondb?sslmode=require';
+
+const isCloud = dbUrl && !dbUrl.includes('localhost') && !dbUrl.includes('127.0.0.1');
+
 const pool = new Pool({
-  connectionString:
-    process.env.DATABASE_URL ||
-    'postgresql://postgres:theovine@localhost:5432/mtsoffshore',
+  connectionString: dbUrl,
+  ssl: isCloud ? { rejectUnauthorized: false } : undefined,
 });
 
 const PROJECTS = [
@@ -153,6 +158,36 @@ async function seed() {
 
     const { rows } = await client.query('SELECT count(*) FROM projects;');
     console.log(`Total projects in database: ${rows[0].count}`);
+
+    console.log('Seeding site_content...');
+    const siteContentPath = path.join(__dirname, '../data/siteContent.json');
+    if (fs.existsSync(siteContentPath)) {
+      const siteContentJson = fs.readFileSync(siteContentPath, 'utf8');
+      await client.query(
+        `
+        INSERT INTO site_content (key, data, updated_at)
+        VALUES ('main', $1, NOW())
+        ON CONFLICT (key) DO NOTHING;
+        `,
+        [siteContentJson]
+      );
+      console.log(' - Site content initialized in DB.');
+    }
+
+    console.log('Seeding default admin user...');
+    const crypto = require('crypto');
+    const salt = crypto.randomBytes(16).toString('hex');
+    const hash = crypto.pbkdf2Sync('admin123', salt, 10000, 64, 'sha512').toString('hex');
+    const passwordHash = `${salt}:${hash}`;
+    await client.query(
+      `
+      INSERT INTO admin_users (username, password_hash, role)
+      VALUES ('admin', $1, 'admin')
+      ON CONFLICT (username) DO NOTHING;
+      `,
+      [passwordHash]
+    );
+    console.log(' - Default admin user seeded (admin / admin123).');
 
     console.log('Database initialization & seeding complete!');
   } catch (err) {

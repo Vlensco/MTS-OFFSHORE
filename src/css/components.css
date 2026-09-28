@@ -1424,7 +1424,21 @@
   background-color: #ffffff !important;
 }
 
-/* Navbar active item override */
+/* Navbar menu styling & active indicator position */
+.single-menu {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 8px 18px !important;
+  text-decoration: none !important;
+  height: auto !important;
+}
+
+.single-menu .menu-roll-text {
+  position: relative !important;
+  display: inline-block !important;
+}
+
 .single-menu.w--current .menu-text-block,
 .single-menu.is-active .menu-text-block,
 .active-nav-item {
@@ -1432,10 +1446,23 @@
   font-weight: 700 !important;
 }
 
+.single-menu::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -4px !important;
+  left: 50% !important;
+  width: 0 !important;
+  height: 3px !important;
+  background-color: #0072ce !important;
+  border-radius: 2px !important;
+  transition: width 0.25s ease, left 0.25s ease !important;
+}
+
+.single-menu:hover::after,
 .single-menu.w--current::after,
 .single-menu.is-active::after {
-  width: 100% !important;
-  left: 0 !important;
+  width: calc(100% - 36px) !important;
+  left: 18px !important;
 }
 
 /* ==========================================================================

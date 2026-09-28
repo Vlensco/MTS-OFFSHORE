@@ -1,9 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const pathname = usePathname();
+
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
 
   useEffect(() => {
     const handleScroll = () => {
