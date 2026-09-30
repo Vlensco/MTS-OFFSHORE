@@ -1,8 +1,38 @@
 'use client';
 
 import { useState } from 'react';
+import { useSiteContent } from '../../context/ContentContext';
 
 export default function ContactPage() {
+  const { content } = useSiteContent();
+  const general = content?.general || {};
+  const contactPage = content?.contactPage || {};
+
+  const heroBg = contactPage.heroBg || '/assets/images/mts_hero_cinematic.jpg';
+  const heroTag = contactPage.heroTag || 'GET IN TOUCH';
+  const heroTitle = contactPage.heroTitle || 'Contact Our Offshore Team';
+
+  const groupTag = contactPage.groupTag || 'MTS OFFSHORE GROUP';
+  const groupTitle =
+    contactPage.groupTitle ||
+    'MTS OFFSHORE Group Offers Offshore Construction Services Worldwide.';
+  const groupDesc =
+    contactPage.groupDesc ||
+    'See below our head office locations and other locations part of the MTS OFFSHORE Group.';
+
+  const office1Title = contactPage.office1Title || 'Head Office - Singapore';
+  const office1Company = contactPage.office1Company || 'MTS OFFSHORE GROUP PTE LTD';
+  const office1Address = contactPage.office1Address || '51 Goldhill Plaza #22-03, Singapore 308900';
+
+  const office2Title = contactPage.office2Title || 'Papua New Guinea';
+  const office2Company = contactPage.office2Company || 'MTS OFFSHORE PNG LIMITED';
+  const office2Address =
+    contactPage.office2Address ||
+    'L5, MRDC Haus, Cnr of Musgrave Street & Champion Parade, Port Moresby, NCD 121, Papua New Guinea';
+
+  const contactEmailTitle = contactPage.contactEmailTitle || 'Have a project in mind? Send a message.';
+  const contactEmail = contactPage.contactEmail || general.contactEmail || 'commercial@mtsoffshore.com';
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -49,7 +79,7 @@ export default function ContactPage() {
     } catch (err) {
       console.error('Submission failed:', err);
       setErrorMessage(
-        err.message || 'An unexpected error occurred. Please try again or email us directly at contact@mtsoffshore.com.'
+        err.message || 'An unexpected error occurred. Please try again or email us directly at commercial@mtsoffshore.com.'
       );
     } finally {
       setLoading(false);
@@ -58,11 +88,25 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* Contact Hero Banner */}
-      <section className="contact-page-hero">
+      {/* Contact Hero Banner (Cinematic, Centered, Matching Screenshot 2) */}
+      <section
+        className="contact-page-hero"
+        style={{
+          position: 'relative',
+          minHeight: '380px',
+          backgroundImage: `linear-gradient(rgba(5, 19, 41, 0.65), rgba(5, 19, 41, 0.82)), url("${heroBg}")`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          padding: '90px 24px',
+        }}
+      >
         <div className="w-layout-blockcontainer container-one w-container">
-          <div className="contact-hero-tag">GET IN TOUCH</div>
-          <h1 className="contact-hero-title">Contact Us</h1>
+          <div className="contact-hero-tag">{heroTag.replace(/^[-—\s]+/, '')}</div>
+          <h1 className="contact-hero-title">{heroTitle}</h1>
         </div>
       </section>
 
@@ -72,12 +116,12 @@ export default function ContactPage() {
           <div className="contact-grid-layout">
             {/* Left Column: Office Locations & Contact Info */}
             <div className="contact-info-col">
-              <div className="contact-info-tag">MTS OFFSHORE GROUP</div>
+              <div className="contact-info-tag">{groupTag.replace(/^[-—\s]+/, '')}</div>
               <h2 className="contact-info-heading">
-                MTS OFFSHORE Group Offers Offshore Construction Services Worldwide.
+                {groupTitle}
               </h2>
               <p className="contact-info-desc">
-                See below our head office locations and other locations part of the MTS OFFSHORE Group.
+                {groupDesc}
               </p>
 
               {/* Office 1: Singapore */}
@@ -89,12 +133,10 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <div className="contact-loc-title">Head Office - Singapore</div>
-                  <div className="contact-loc-company">MTS OFFSHORE GROUP PTE LTD</div>
+                  <div className="contact-loc-title">{office1Title}</div>
+                  <div className="contact-loc-company">{office1Company}</div>
                   <div className="contact-loc-address">
-                    51 Goldhill Plaza<br />
-                    #22-03<br />
-                    Singapore 308900
+                    {office1Address}
                   </div>
                 </div>
               </div>
@@ -108,13 +150,10 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <div className="contact-loc-title">Papua New Guinea</div>
-                  <div className="contact-loc-company">MTS OFFSHORE PNG LIMITED</div>
+                  <div className="contact-loc-title">{office2Title}</div>
+                  <div className="contact-loc-company">{office2Company}</div>
                   <div className="contact-loc-address">
-                    L5, MRDC Haus,<br />
-                    Cnr of Musgrave Street &amp; Champion Parade<br />
-                    Port Moresby, NCD 121<br />
-                    Papua New Guinea
+                    {office2Address}
                   </div>
                 </div>
               </div>
@@ -128,9 +167,9 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <div className="contact-loc-title">Have a project in mind? Send a message.</div>
-                  <a href="mailto:contact@mtsoffshore.com" className="contact-mail-link">
-                    contact@mtsoffshore.com
+                  <div className="contact-loc-title">{contactEmailTitle}</div>
+                  <a href={`mailto:${contactEmail}`} className="contact-mail-link">
+                    {contactEmail}
                   </a>
                 </div>
               </div>

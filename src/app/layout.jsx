@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 import BackToTop from '../components/BackToTop';
 import TextRevealObserver from '../components/TextRevealObserver';
 import { ContentProvider } from '../context/ContentContext';
+import ThemeStyleInjector from '../components/ThemeStyleInjector';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://mtsoffshore.com';
 
@@ -140,12 +141,12 @@ const websiteSchema = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;900&display=swap"
           rel="stylesheet"
         />
         <link rel="stylesheet" href="/assets/css/panmarina_shared.css" />
@@ -158,8 +159,9 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <ContentProvider>
+          <ThemeStyleInjector />
           <TextRevealObserver />
           <Header />
           <main id="main-content">{children}</main>

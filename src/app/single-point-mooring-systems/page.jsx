@@ -47,8 +47,10 @@ export default function SPMPage() {
     };
   }, []);
 
+  const sec2Title = spm.sec2Title || 'Comprehensive SPM & CALM Buoy Services';
+
   // Section 2 Capabilities Data
-  const capabilities = [
+  const defaultCapabilities = [
     {
       title: 'PROJECT MANAGEMENT',
       image: '/assets/img/6937955547f3f19cab2173bc_On_site_Training_Tanzainia_3.JPG',
@@ -81,8 +83,15 @@ export default function SPMPage() {
     },
   ];
 
+  const capabilities = spm.capabilities && spm.capabilities.length === 6 ? spm.capabilities : defaultCapabilities;
+
   // Section 5 Asset items
-  const assetTypes = [
+  const sec5Tag = spm.sec5Tag || 'COMPREHENSIVE EXPERIENCE';
+  const sec5Title = spm.sec5Title || 'Comprehensive Knowledge Of Offshore Assets';
+  const sec5Desc =
+    spm.sec5Desc ||
+    'Our management team is experienced in a diverse range of subsea, floating, and fixed offshore energy assets, providing you with exceptional Offshore Transport & Installation services.';
+  const defaultAssets = [
     'Catenary Anchor Leg Mooring (CALM) Buoys',
     'Single Point Mooring (SPM) Systems',
     'Single Anchor Leg Mooring Systems (SALM)',
@@ -92,34 +101,36 @@ export default function SPMPage() {
     'Floating Storage and Regasification Unit (FSRU)',
     'Fixed Wellhead & Production Platform',
   ];
+  const assetTypes = spm.sec5Assets && spm.sec5Assets.length > 0 ? spm.sec5Assets : defaultAssets;
+  const sec5BtnText = spm.sec5BtnText || 'Learn More';
+  const sec5BtnLink = spm.sec5BtnLink || '/services';
+  const sec5Img = spm.sec5Img || '/assets/img/693793d2a7b5023e4cf67502_37.JPG';
 
-  // Section 6 Blue cards
-  const blueCards = [
+  // Section 6 Blue cards (Foto 5 style)
+  const defaultBlueCards = [
     {
-      icon: '/assets/img/65d4023f0fe16f42cb1837e1_Project_Planning_White_Icons.svg',
       title: 'Tier-1 Technical Expertise',
       description:
         'Our management team have successfully delivered high-stakes offshore construction, T&I, and FPSO installation campaigns across Asia, Africa, and the Middle East.',
-      href: '/about',
+      link: '/about',
     },
     {
-      icon: '/assets/img/65d4023f0fe16f42cb1837a9_Building_Construction_White.svg',
       title: 'Hands-On Leadership',
       description:
         'We are driven by a commitment to operational excellence, efficiency, and performance. MTS OFFSHORE provides clients with a dependable partner capable of executing critical scopes.',
-      href: '/about',
+      link: '/about',
     },
     {
-      icon: '/assets/img/65d4023f0fe16f42cb1837df_Modern_Technology_White.svg',
       title: 'Focused On Safety',
       description:
         'All operations are delivered in compliance with international HSE standards, project-specific requirements, and permit-to-work systems. From vessel mobilisation to diving and T&I scopes, safety underpins every decision we make.',
-      href: '/about',
+      link: '/about',
     },
   ];
+  const blueCards = spm.blueCards && spm.blueCards.length === 3 ? spm.blueCards : defaultBlueCards;
 
   // Section 8 SPM Management Experiences
-  const spmExperiences = [
+  const defaultSpmExperiences = [
     {
       tag: 'Algeria',
       year: '2019',
@@ -163,6 +174,7 @@ export default function SPMPage() {
       image: '/assets/img/673bf6cd3477712e48fee7c6_RES_DSC8495.jpg',
     },
   ];
+  const spmExperiences = spm.spmExperiences && spm.spmExperiences.length > 0 ? spm.spmExperiences : defaultSpmExperiences;
 
   return (
     <>
@@ -206,6 +218,19 @@ export default function SPMPage() {
           ========================================================================= */}
       <section id="spm-capabilities" style={{ padding: '80px 0 90px', backgroundColor: '#f8fafc' }}>
         <div className="w-layout-blockcontainer container-one w-container">
+          <div style={{ textAlign: 'center', marginBottom: '45px' }}>
+            <h2
+              style={{
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: 'clamp(1.85rem, 3.2vw, 2.5rem)',
+                fontWeight: 800,
+                color: '#0c3247',
+                margin: 0,
+              }}
+            >
+              {sec2Title}
+            </h2>
+          </div>
           <div className="spm-capabilities-grid">
             {capabilities.map((item, idx) => (
               <Link key={idx} href={item.href} className="spm-capability-card">
@@ -355,7 +380,7 @@ export default function SPMPage() {
         <div className="w-layout-blockcontainer container-one w-container">
           <div className="spm-two-col-grid">
             <div>
-              <div className="single-line-tag">COMPREHENSIVE EXPERIENCE</div>
+              <div className="single-line-tag">{sec5Tag}</div>
               <h2
                 style={{
                   fontFamily: 'Montserrat, sans-serif',
@@ -366,7 +391,7 @@ export default function SPMPage() {
                   margin: '14px 0 20px',
                 }}
               >
-                Comprehensive Knowledge Of Offshore Assets
+                {sec5Title}
               </h2>
               <p
                 style={{
@@ -377,9 +402,7 @@ export default function SPMPage() {
                   marginBottom: '24px',
                 }}
               >
-                Our management team is experienced in a diverse range of subsea, floating, and
-                fixed offshore energy assets, providing you with exceptional Offshore Transport &amp;
-                Installation services.
+                {sec5Desc}
               </p>
 
               <ul className="spm-asset-list">
@@ -391,8 +414,8 @@ export default function SPMPage() {
                 ))}
               </ul>
 
-              <Link href="/services" className="body-button bg-dark-pmg-blue w-inline-block">
-                <div className="text-block-10">Learn More</div>
+              <Link href={sec5BtnLink} className="body-button bg-dark-pmg-blue w-inline-block">
+                <div className="text-block-10">{sec5BtnText}</div>
                 <span style={{ fontSize: '1.15rem', marginLeft: '6px' }}>→</span>
               </Link>
             </div>
@@ -412,8 +435,8 @@ export default function SPMPage() {
                 }}
               >
                 <img
-                  src="/assets/img/693793d2a7b5023e4cf67502_37.JPG"
-                  alt="Offshore SPM CALM Buoy in Field"
+                  src={sec5Img}
+                  alt={sec5Title}
                   style={{ width: '100%', height: '520px', objectFit: 'cover', display: 'block' }}
                 />
               </div>
@@ -423,23 +446,41 @@ export default function SPMPage() {
       </section>
 
       {/* =========================================================================
-          SECTION 6: THREE BLUE VALUE CARDS (Tier-1, Hands-On, Safety)
+          SECTION 6: THREE BLUE VALUE CARDS (Tier-1, Hands-On, Safety - Foto 5 Style)
           ========================================================================= */}
       <section style={{ padding: '40px 0 100px', backgroundColor: '#ffffff' }}>
         <div className="w-layout-blockcontainer container-one w-container">
           <div className="spm-blue-cards-grid">
             {blueCards.map((card, idx) => (
-              <Link key={idx} href={card.href} className="spm-blue-card">
+              <Link key={idx} href={card.link || card.href || '/about'} className="spm-blue-card">
                 <div className="spm-blue-card-header">
-                  <img src={card.icon} alt={card.title} className="spm-blue-card-icon" />
-                  <img
-                    src="/assets/img/65d4023f0fe16f42cb1837e4_Up_White_Arrow.svg"
-                    alt="Arrow"
-                    className="spm-blue-card-arrow"
-                  />
+                  {idx === 0 && (
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#f6b61b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="3" width="7" height="7" rx="1.5" fill="#f6b61b" />
+                      <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                      <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                      <rect x="14" y="14" width="7" height="7" rx="1.5" />
+                    </svg>
+                  )}
+                  {idx === 1 && (
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#f6b61b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M19 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
+                      <circle cx="11" cy="7" r="4" />
+                      <polyline points="16 11 18 13 22 9" stroke="#f6b61b" strokeWidth="2.4" />
+                    </svg>
+                  )}
+                  {idx === 2 && (
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#f6b61b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                      <polyline points="9 11 12 14 15 11" stroke="#f6b61b" strokeWidth="2.4" />
+                    </svg>
+                  )}
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="spm-blue-card-arrow">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
                 </div>
                 <h3 className="spm-blue-card-title">{card.title}</h3>
-                <div className="spm-blue-card-divider" />
                 <p className="spm-blue-card-desc">{card.description}</p>
               </Link>
             ))}
@@ -452,7 +493,7 @@ export default function SPMPage() {
           ========================================================================= */}
       <section style={{ padding: '90px 0 100px', backgroundColor: '#f8fafc' }}>
         <div className="w-layout-blockcontainer container-one w-container">
-          <div className="single-line-tag">Built for Offshore. Trusted Worldwide.</div>
+          <div className="single-line-tag">{spm.sec7Tag || 'Built for Offshore. Trusted Worldwide.'}</div>
           <h2
             style={{
               fontFamily: 'Montserrat, sans-serif',
@@ -462,7 +503,7 @@ export default function SPMPage() {
               margin: '14px 0 36px',
             }}
           >
-            Recent Projects
+            {spm.sec7Title || 'Recent Projects'}
           </h2>
 
           <div className="spm-work-grid">

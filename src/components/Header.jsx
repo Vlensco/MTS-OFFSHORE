@@ -3,11 +3,15 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useSiteContent } from '../context/ContentContext';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const { content } = useSiteContent();
+
+  const capabilityPdf = content?.general?.capabilityPdf || '/assets/docs/MTS_Offshore_Capability_Statement.pdf';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,7 +54,7 @@ export default function Header() {
       <section style={{ backgroundColor: '#146cac', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.18)' }}>
         <div className="w-layout-blockcontainer container-one w-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
           <a
-            href="/assets/docs/MTS_Offshore_Capability_Statement.pdf"
+            href={capabilityPdf}
             target="_blank"
             rel="noopener noreferrer"
             className="top-utility-link"

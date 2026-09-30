@@ -113,12 +113,15 @@ export default function PlanningAccordion() {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-              {items.map((item) => {
+              {items.map((item, idx) => {
                 const isActive = hoveredItem === item.id;
+                const badge = item.badge || `Phase 0${idx + 1}`;
+                const desc = item.desc || DEFAULT_PLANNING_ITEMS[idx]?.desc || '';
                 return (
                   <div
-                    key={item.id}
+                    key={item.id || idx}
                     onMouseEnter={() => setHoveredItem(item.id)}
+                    onClick={() => setHoveredItem(item.id)}
                     style={{
                       backgroundColor: '#ffffff',
                       border: isActive ? '2px solid #0072ce' : '1px solid #e2e8f0',
@@ -143,7 +146,7 @@ export default function PlanningAccordion() {
                           letterSpacing: '0.05em',
                         }}
                       >
-                        {item.badge}
+                        {badge}
                       </span>
                       <svg
                         width="20"
@@ -164,7 +167,7 @@ export default function PlanningAccordion() {
                       {item.title}
                     </h3>
                     <p style={{ color: '#64748b', fontSize: '0.92rem', lineHeight: '1.6', margin: 0 }}>
-                      {item.desc}
+                      {desc}
                     </p>
                   </div>
                 );

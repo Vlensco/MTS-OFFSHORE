@@ -1,99 +1,4 @@
 {
-  "home": {
-    "hero": {
-      "tag": "asd",
-      "title": "Global Offshore Construction & Subsea Services",
-      "bgImage": "/assets/images/mts_hero_cinematic.jpg",
-      "description": "Lean, responsive, and experienced — delivering safe and efficient PM&C, T&I, and marine terminal services worldwide.",
-      "primaryBtnLink": "/our-advantage",
-      "primaryBtnText": "Our Advantage",
-      "secondaryBtnLink": "/services",
-      "secondaryBtnText": "Explore Services"
-    },
-    "about": {
-      "tag": "About Us",
-      "title": "Offshore Construction Services",
-      "bullet1": "Expert Personnel and technical understanding",
-      "bullet2": "Outstanding Quality management and process control",
-      "bullet3": "Strong track record of safe and reliable delivery",
-      "badgeText": "Years Of Management Experience",
-      "mainImage": "/assets/images/about_jacket_portrait.jpg",
-      "badgeImage": "/assets/img/65d42addbadc4b36cf019683_20200121_134838.jpg",
-      "thumbImage": "/assets/images/about_thumb.jpg",
-      "badgeNumber": "50+",
-      "description": "MTS OFFSHORE's operations span over three decades, successfully delivering complex marine projects across the Middle East, Europe, South East Asia and Oceania.",
-      "missionDesc": "Fueling the future of offshore construction. We are pioneers of turnkey offshore construction services that are flexible, agile, and cost-effective for global and regional operators.",
-      "missionTitle": "Our Mission & Vision"
-    },
-    "planning": {
-      "tag": "Work Process",
-      "items": [
-        {
-          "id": 1,
-          "desc": "Comprehensive feasibility studies, mooring analysis, route surveys, and constructability assessments for complex offshore campaigns.",
-          "badge": "Phase 01",
-          "image": "/assets/images/mts_pmc_control.jpg",
-          "title": "Project Planning & FEED"
-        },
-        {
-          "id": 2,
-          "desc": "Detailed structural design, subsea flowline modeling, dynamic riser simulation, and CALM buoy configuration under international codes.",
-          "badge": "Phase 02",
-          "image": "/assets/images/mts_subsea_aim.jpg",
-          "title": "Engineering & Designing"
-        },
-        {
-          "id": 3,
-          "desc": "Turnkey offshore execution with heavy-lift crane vessels, pipelaying barges, saturation diving spreads, and precision telemetry.",
-          "badge": "Phase 03",
-          "image": "/assets/images/mts_ti_heavylift.jpg",
-          "title": "Marine Execution & Installation"
-        }
-      ],
-      "title": "Precision Planning & Offshore Delivery",
-      "description": "End-to-end management ensuring flawless marine execution from initial FEED review through offshore installation."
-    },
-    "services": {
-      "tag": "Our Services",
-      "items": [
-        {
-          "tag": "PMC",
-          "desc": "FEED review, technical consultancy, client representation, and full onshore/offshore execution management.",
-          "href": "/services/pmc",
-          "image": "/assets/img/6886b9bc620916f9026a9219_Birdseye_Deck_View_Compressed.jpg",
-          "title": "Project Management & Consultancy"
-        },
-        {
-          "tag": "T&I",
-          "desc": "Heavy lift, offshore jacket launch, topsides float-over, subsea flowline laying, and dynamic positioning spreads.",
-          "href": "/services/transport-installation",
-          "image": "/assets/img/65d40ba94f193551362148d7_TI86.png",
-          "title": "Transportation & Installation"
-        },
-        {
-          "tag": "O&M",
-          "desc": "Turnkey marine terminal operations, AHTS support, CALM buoy preventative overhauls, and offshore logistics.",
-          "href": "/services",
-          "image": "/assets/img/65d407d1d8b67f4dedd837f4_20170309_164902.jpg",
-          "title": "Operations & Maintenance"
-        },
-        {
-          "tag": "AIM",
-          "desc": "Subsea saturation diving, robotic ROV surveys, non-destructive testing (NDT), and structural life extension.",
-          "href": "/services/asset-integrity",
-          "image": "/assets/img/692b8093fa6b54589904f7a2_20161015_133338.jpg",
-          "title": "Asset Integrity Management"
-        }
-      ],
-      "title": "Comprehensive Offshore Solutions",
-      "description": "We deliver a wide range of offshore construction, project management and consultancy services for subsea and surface installations."
-    },
-    "projectsSection": {
-      "tag": "Featured Work",
-      "desc": "Explore our track record of successfully delivered offshore campaigns across Asia-Pacific and West Africa.",
-      "title": "Projects"
-    }
-  },
   "general": {
     "phone": "+65 6235 0000",
     "address": "MTS Group Pte Ltd, Singapore & MTS Indonesia, Jakarta",
@@ -104,28 +9,119 @@
     "inquiryEmail": "info@mtsoffshore.com",
     "emergencyPhone": "+65 9123 4567"
   },
-  "spmPage": {
-    "heroBg": "/assets/images/mts_spm_epic.jpg",
-    "heroTag": "SPECIALIZED EXPERTISE",
-    "heroDesc": "World-class CALM buoy installation, overhaul, maintenance, subsea hose replacement, and mooring telemetry services.",
-    "heroTitle": "Single Point Mooring (SPM) Systems"
+  "home": {
+    "hero": {
+      "tag": "WELCOME TO MARINE TERMINAL SERVICES\n",
+      "title": "",
+      "bgImage": "https://sft70iv02c5e25rv.public.blob.vercel-storage.com/uploads/IMG-20211223-WA0035_1790735348644.jpg",
+      "description": "Delivering safe and efficient PM&C, T&I, and marine terminal services worldwide.",
+      "primaryBtnLink": "/our-advantage",
+      "primaryBtnText": "Our Advantage",
+      "secondaryBtnLink": "/services",
+      "secondaryBtnText": "Explore Services"
+    },
+    "about": {
+      "tag": "About Us",
+      "title": "Offshore Construction Services",
+      "bullet1": "Expert Personnel and Technical understanding of Oil & Gas Industry Standards",
+      "bullet2": "Outstanding Quality management and process controls",
+      "bullet3": "Proven Track Record of safe and reliable project delivery",
+      "badgeText": "Years Of Management Experience",
+      "mainImage": "https://sft70iv02c5e25rv.public.blob.vercel-storage.com/uploads/image1_1790736744690.PNG",
+      "badgeImage": "https://sft70iv02c5e25rv.public.blob.vercel-storage.com/uploads/20170223_070855_1790736656687.jpg",
+      "thumbImage": "https://sft70iv02c5e25rv.public.blob.vercel-storage.com/uploads/20170224_170330_1790736505266.jpg",
+      "badgeNumber": "80+",
+      "description": "MTS OFFSHORE's Senior Management Team's Oil & Gas experience spans over 8 decades, successfully delivering complex Marine Installation & Maintenance Projects across the Middle East, Europe, Southeast Asia, South America and West & East Africa.",
+      "missionDesc": "Continue Delivering Safe and Reliable Onshore & Offshore projects for our valued Clients. We are highly experienced in the execution of turnkey offshore construction & Maintenance services that are Tailored to each specific Clients requirements, agile, and cost-effective for global and regional operators.",
+      "missionTitle": "Our Mission & Vision"
+    },
+    "planning": {
+      "tag": "Work Process",
+      "items": [
+        {
+          "id": 1,
+          "desc": "Comprehensive feasibility studies, mooring analysis, route surveys, and constructability assessments for complex offshore campaigns.",
+          "badge": "Phase 01",
+          "image": "https://sft70iv02c5e25rv.public.blob.vercel-storage.com/uploads/37_1790738452790.JPG",
+          "title": "Project Planning & FEED Services"
+        },
+        {
+          "id": 2,
+          "desc": "Detailed structural design, subsea flowline modeling, dynamic riser simulation, and CALM buoy configuration under international codes.",
+          "badge": "Phase 02",
+          "image": "https://sft70iv02c5e25rv.public.blob.vercel-storage.com/uploads/Buoy_Lift__4__1790737754435.JPG",
+          "title": "Detailed Design & Engineering Services"
+        },
+        {
+          "id": 3,
+          "desc": "Turnkey offshore execution with heavy-lift crane vessels, pipelaying barges, saturation diving spreads, and precision telemetry.",
+          "badge": "Phase 03",
+          "image": "https://sft70iv02c5e25rv.public.blob.vercel-storage.com/uploads/IMG-20211223-WA0028_1790738540744.jpg",
+          "title": "Marine Execution, Installation and Commisioning"
+        }
+      ],
+      "title": "Project Planning & Offshore Delivery",
+      "description": "End-to-end management ensuring flawless marine execution from initial FEED review through offshore installation."
+    },
+    "services": {
+      "tag": "Our Services",
+      "items": [
+        {
+          "tag": "PMC",
+          "desc": "FEED review, technical consultancy, client representation, and full onshore/offshore execution management.",
+          "href": "/services/pmc",
+          "image": "https://sft70iv02c5e25rv.public.blob.vercel-storage.com/uploads/Sunset_1790735784889.jpg",
+          "title": "Project Management & Consultancy"
+        },
+        {
+          "tag": "T&I",
+          "desc": "Heavy lift, offshore jacket launch, topsides float-over, subsea flowline laying, and dynamic positioning spreads.",
+          "href": "/services/transport-installation",
+          "image": "https://sft70iv02c5e25rv.public.blob.vercel-storage.com/uploads/Piles_on_Barge_1790735951557.jpg",
+          "title": "Transportation & Installation"
+        },
+        {
+          "tag": "O&M",
+          "desc": "Turnkey marine terminal operations, AHTS support, CALM buoy preventative overhauls, and offshore logistics.",
+          "href": "/services",
+          "image": "https://sft70iv02c5e25rv.public.blob.vercel-storage.com/uploads/SBM_Close_Up_1790736038158.JPG",
+          "title": "Operations & Maintenance"
+        },
+        {
+          "tag": "AIM",
+          "desc": "Subsea saturation diving, robotic ROV surveys, non-destructive testing (NDT), and structural life extension.",
+          "href": "/services/asset-integrity",
+          "image": "https://sft70iv02c5e25rv.public.blob.vercel-storage.com/uploads/20161002_095212_1790736105972.jpg",
+          "title": "Asset Integrity Management"
+        }
+      ],
+      "title": "Comprehensive Offshore Solutions",
+      "description": "We deliver a wide range of offshore Installation, Construction, Project Management and Consultancy Services for Subsea and Surface Projects Worldwide."
+    },
+    "projectsSection": {
+      "tag": "Featured Work",
+      "desc": "Explore our track record of successfully delivered offshore campaigns across Asia-Pacific and West Africa.",
+      "title": "Projects"
+    }
   },
   "aboutPage": {
-    "heroBg": "/assets/images/mts_hero_cinematic.jpg",
+    "heroBg": "https://sft70iv02c5e25rv.public.blob.vercel-storage.com/uploads/DSC00022__3__1790739968135.jpg",
     "heroTag": "ABOUT MTS OFFSHORE",
-    "storyP1": "MTS OFFSHORE Group brings together seasoned offshore marine construction professionals with decades of hands-on expertise in subsea pipeline installation, SPM terminal overhauls, platform refurbishment, and deepwater projects.",
-    "storyP2": "Our philosophy combines tier-one international contractor engineering rigor with independent agility, delivering tailored solutions that minimize client CAPEX and offshore downtime while maintaining an uncompromised commitment to safety.",
-    "heroDesc": "Delivering safe, efficient, and cost-effective offshore construction, transport & installation, and marine terminal services worldwide.",
+    "storyP1": "MTS OFFSHORE brings together seasoned offshore marine construction professionals with decades of hands-on expertise in Surface / Subsea Installation & O&M on FSO / FPSO, SPM Systems, Platform projects around the world.",
+    "storyP2": "",
+    "heroDesc": "Delivering Proven safe, and cost-effective offshore construction, transport & installation, and marine terminal services worldwide.",
     "storyImg": "/assets/images/about_jacket.jpg",
     "storyTag": "Our Story",
-    "heroTitle": "Fueling The Future Of Offshore Construction",
-    "storyTitle": "Over 30 Years of Maritime Excellence"
+    "heroTitle": "Experts in Offshore Construction, Operations & Maintenance",
+    "storyTitle": "Over 80 Years of Combined Management Experience delivering worldwide Oil & Gas Projects "
   },
-  "contactPage": {
-    "heroBg": "/assets/images/mts_hero_cinematic.jpg",
-    "heroTag": "GET IN TOUCH",
-    "heroDesc": "Discuss your offshore construction, SPM maintenance, or project management requirements with our senior engineers.",
-    "heroTitle": "Contact Our Offshore Team"
+  "theme": {
+    "fontHeading": "Montserrat",
+    "fontBody": "Inter",
+    "colorHeading": "#0c3247",
+    "colorBody": "#4a5568",
+    "colorAccent": "#0072ce",
+    "colorTopBar": "#146cac"
   },
   "servicesPage": {
     "heroBg": "/assets/images/hero-offshore.jpg",
@@ -133,10 +129,125 @@
     "heroDesc": "Specialized marine engineering, offshore construction, and project management capabilities tailored to complex offshore environments.",
     "heroTitle": "Our Core Offshore Services"
   },
+  "spmPage": {
+    "heroBg": "/assets/images/mts_spm_epic.jpg",
+    "heroTag": "SPECIALIZED EXPERTISE",
+    "heroDesc": "World-class CALM buoy installation, overhaul, maintenance, subsea hose replacement, and mooring telemetry services.",
+    "heroTitle": "Single Point Mooring (SPM) Systems",
+    "sec2Title": "Comprehensive SPM & CALM Buoy Services",
+    "sec5Tag": "COMPREHENSIVE EXPERIENCE",
+    "sec5Title": "Comprehensive Knowledge Of Offshore Assets",
+    "sec5Desc": "Our management team is experienced in a diverse range of subsea, floating, and fixed offshore energy assets, providing you with exceptional Offshore Transport & Installation services.",
+    "sec5Assets": [
+      "Catenary Anchor Leg Mooring (CALM) Buoys",
+      "Single Point Mooring (SPM) Systems",
+      "Single Anchor Leg Mooring Systems (SALM)",
+      "Floating, Production, Storage and Offloading (FPSO)",
+      "Floating, Storage and Offloading (FSO)",
+      "Floating Liquid Natural Gas (FLNG)",
+      "Floating Storage and Regasification Unit (FSRU)",
+      "Fixed Wellhead & Production Platform"
+    ],
+    "sec5BtnText": "Learn More",
+    "sec5BtnLink": "/services",
+    "sec5Img": "/assets/img/693793d2a7b5023e4cf67502_37.JPG",
+    "blueCards": [
+      {
+        "title": "Tier-1 Technical Expertise",
+        "description": "Our management team have successfully delivered high-stakes offshore construction, T&I, and FPSO installation campaigns across Asia, Africa, and the Middle East.",
+        "link": "/about"
+      },
+      {
+        "title": "Hands-On Leadership",
+        "description": "We are driven by a commitment to operational excellence, efficiency, and performance. MTS OFFSHORE provides clients with a dependable partner capable of executing critical scopes.",
+        "link": "/about"
+      },
+      {
+        "title": "Focused On Safety",
+        "description": "All operations are delivered in compliance with international HSE standards, project-specific requirements, and permit-to-work systems. From vessel mobilisation to diving and T&I scopes, safety underpins every decision we make.",
+        "link": "/about"
+      }
+    ],
+    "sec7Tag": "SUCCESSFUL OFFSHORE CAMPAIGNS",
+    "sec7Title": "Recent Projects",
+    "recentProjects": [
+      {
+        "badge": "EPCI CAMPAIGN",
+        "title": "EPCI FPSO Overhaul Project",
+        "image": "/assets/images/mts_ti_heavylift.jpg",
+        "link": "/services/transport-installation"
+      },
+      {
+        "badge": "SPM TERMINAL",
+        "title": "Kumul SPM Buoy Subsea Pipelay EPCI",
+        "image": "/assets/img/68db00f59ae0ac5e7cf1047f_DJI_20250929062534_0136_D.jpeg",
+        "link": "/services"
+      },
+      {
+        "badge": "PLATFORM REJUVENATION",
+        "title": "Platform Maintenance Project",
+        "image": "/assets/img/692b8093fa6b54589904f7a2_20161015_133338.jpg",
+        "link": "/services/asset-integrity"
+      }
+    ],
+    "sec8Tag": "TRACK RECORD & CASE HISTORIES",
+    "sec8Title": "SPM Management Experiences",
+    "spmExperiences": [
+      {
+        "tag": "Algeria",
+        "year": "2019",
+        "title": "Arzew CALM Buoy Refurbishment Project",
+        "desc": "Delivered end-to-end Algeria SPM refurbishment of 2x SOFEC buoys.",
+        "image": "/assets/img/693798a99af507446e85cdbc_20190108_102901.jpg"
+      },
+      {
+        "tag": "Iraq",
+        "year": "2017",
+        "title": "Iraq CALM Buoy Transport & Installation",
+        "desc": "Full SPM 5 Buoy Installation, 6x Anchor Legs & Subsea Hoses and associated Pre-Commissioning.",
+        "image": "/assets/img/673beb2ab89a402d38109695_20170301_123429.jpeg"
+      },
+      {
+        "tag": "Iraq",
+        "year": "2016",
+        "title": "Iraq CALM Buoy Refurbishment & Dry Docking",
+        "desc": "Full refurbishment SPM Buoy including SPM Main Bearing, CPU Bearing, All Valves.",
+        "image": "/assets/img/69379a7a8551da87aca7709a_20161018_081811.jpg"
+      },
+      {
+        "tag": "Iraq",
+        "year": "2012",
+        "title": "Iraq Crude Oil Expansion - SPM Transport & Installation",
+        "desc": "Monitoring of all offshore SPM Installation works with regards to 3x Full SPM Buoy Installations.",
+        "image": "/assets/img/673bea8708adff4c66fd15f8_Buoy_Lift__5_.JPG"
+      },
+      {
+        "tag": "Russia",
+        "year": "2008",
+        "title": "SALM Buoy Salvage",
+        "desc": "Disaster management, oil prevention and salvage of detached SALM buoy in Sakhalin.",
+        "image": "/assets/img/673bf72d62dd00cec51cf6e5_RES_DSC2127.jpg"
+      },
+      {
+        "tag": "Japan & Russia",
+        "year": "2008",
+        "title": "SALM Repair & Commissioning",
+        "desc": "Supervising repair works to SALM Buoy in Japan and offshore commissioning.",
+        "image": "/assets/img/673bf6cd3477712e48fee7c6_RES_DSC8495.jpg"
+      }
+    ]
+  },
   "advantagePage": {
     "heroBg": "/assets/images/hero_barge.jpg",
     "heroTag": "WHY CHOOSE MTS",
     "heroDesc": "Lean operations, elite marine engineers, unmatched safety record, and agile offshore mobilization capabilities.",
     "heroTitle": "Our Competitive Advantage"
+  },
+  "contactPage": {
+    "heroBg": "/assets/images/mts_hero_cinematic.jpg",
+    "heroTag": "GET IN TOUCH",
+    "heroDesc": "Discuss your offshore construction, SPM maintenance, or project management requirements with our senior engineers.",
+    "heroTitle": "Contact Our Offshore Team",
+    "contactEmail": "commercial@mtsoffshore.com"
   }
 }

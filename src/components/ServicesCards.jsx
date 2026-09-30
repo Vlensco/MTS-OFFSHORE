@@ -13,6 +13,7 @@ export default function ServicesCards() {
     servSection.description ||
     'We deliver a wide range of offshore construction, project management and consultancy services for subsea and surface installations.';
   const services = servSection.items || [];
+  const capabilityPdf = content?.general?.capabilityPdf || '/assets/docs/MTS_Offshore_Capability_Statement.pdf';
 
   return (
     <section className="home-four-service">
@@ -80,7 +81,7 @@ export default function ServicesCards() {
         <div className="w-layout-layout wf-layout-layout" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
           <div className="w-layout-cell" style={{ textAlign: 'center' }}>
             <a
-              href="/assets/docs/MTS_Offshore_Capability_Statement.pdf"
+              href={capabilityPdf}
               target="_blank"
               rel="noopener noreferrer"
               className="body-button bg-dark-pmg-blue w-inline-block"

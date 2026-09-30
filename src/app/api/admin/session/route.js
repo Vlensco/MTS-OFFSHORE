@@ -7,10 +7,7 @@ export async function GET(request) {
   const session = verifySessionToken(token);
 
   if (!session) {
-    return NextResponse.json(
-      { authenticated: false, error: 'Not authenticated' },
-      { status: 401 }
-    );
+    return NextResponse.json({ authenticated: false });
   }
 
   return NextResponse.json({

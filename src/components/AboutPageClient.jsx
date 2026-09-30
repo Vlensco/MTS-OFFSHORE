@@ -24,6 +24,12 @@ export default function AboutPageClient() {
     'From Single Point Mooring (SPM) CALM buoy changeouts to deepwater subsea flowline stabilization, jacket installations, and topside rejuvenations, our multi-disciplinary offshore taskforces deliver safely, on schedule, and within budget.';
   const storyImg = about.storyImg || '/assets/images/mts_ti_heavylift.jpg';
 
+  const whyTag = about.whyTag || 'WHY CHOOSE US';
+  const whyTitle = about.whyTitle || 'Tailored Solutions For Offshore';
+  const whyDesc =
+    about.whyDesc ||
+    'MTS OFFSHORE develops tailored offshore solutions that work specifically for Client operations. Our flexible and collaborative approach ensures stakeholder satisfaction and reliable work delivery.';
+
   const whyCards = about.whyCards || [
     {
       title: 'Commitment to Safety & Quality',
@@ -140,12 +146,14 @@ export default function AboutPageClient() {
           <div className="w-layout-blockcontainer container-one w-container">
             <div className="about-why-header-flex">
               <div className="about-why-header-left">
-                <span className="about-why-tag">WHY CHOOSE US</span>
-                <h2 className="about-why-title">Tailored Solutions For Offshore</h2>
+                <span className="about-why-tag" style={{ color: '#ffb800' }}>{whyTag}</span>
+                <h2 className="about-why-title text-color-white text-white" style={{ color: '#ffffff' }}>
+                  {whyTitle}
+                </h2>
               </div>
               <div className="about-why-header-right">
-                <p className="about-why-desc">
-                  MTS OFFSHORE develops tailored offshore solutions that work specifically for Client operations. Our flexible and collaborative approach ensures stakeholder satisfaction and reliable work delivery.
+                <p className="about-why-desc text-white" style={{ color: '#cbd5e1' }}>
+                  {whyDesc}
                 </p>
               </div>
             </div>
