@@ -11,6 +11,107 @@ import {
   IconX,
 } from './AdminIcons';
 
+// Helper function to compress and resize large photos in browser before upload (prevents Vercel 413 Payload Too Large)
+async function compressImageIfNeeded(file, maxDimension = 2400) {
+  if (!file || !file.type || !file.type.startsWith('image/')) {
+    return file;
+  }
+  if (file.type === 'image/svg+xml' || file.type === 'image/gif') {
+    return file;
+  }
+
+  // If already under 1.5MB, no compression needed
+  if (file.size <= 1.5 * 1024 * 1024) {
+    return file;
+  }
+
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onerror = () => resolve(file);
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onerror = () => resolve(file);
+      img.onload = () => {
+        try {
+          let { width, height } = img;
+
+          // Scale down dimensions if needed
+          if (width > maxDimension || height > maxDimension) {
+            if (width > height) {
+              height = Math.round((height * maxDimension) / width);
+              width = maxDimension;
+            } else {
+              width = Math.round((width * maxDimension) / height);
+              height = maxDimension;
+            }
+          }
+
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext('2d');
+          if (!ctx) {
+            resolve(file);
+            return;
+          }
+
+          ctx.imageSmoothingEnabled = true;
+          ctx.imageSmoothingQuality = 'high';
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // Use image/jpeg for efficient compression
+          const mimeType = file.type === 'image/png' ? 'image/png' : 'image/jpeg';
+          const quality = 0.88;
+
+          canvas.toBlob(
+            (blob) => {
+              if (!blob) {
+                resolve(file);
+                return;
+              }
+
+              // If still large (> 3.5MB, near Vercel's 4.5MB limit), re-encode with jpeg at quality 0.78
+              if (blob.size > 3.5 * 1024 * 1024) {
+                canvas.toBlob(
+                  (smallerBlob) => {
+                    if (!smallerBlob) {
+                      resolve(file);
+                      return;
+                    }
+                    const newName = file.name.replace(/\.[^.]+$/, '.jpg');
+                    const compressedFile = new File([smallerBlob], newName, {
+                      type: 'image/jpeg',
+                      lastModified: Date.now(),
+                    });
+                    resolve(compressedFile);
+                  },
+                  'image/jpeg',
+                  0.78
+                );
+                return;
+              }
+
+              const compressedFile = new File([blob], file.name, {
+                type: blob.type,
+                lastModified: Date.now(),
+              });
+              resolve(compressedFile);
+            },
+            mimeType,
+            quality
+          );
+        } catch (err) {
+          console.warn('Canvas compression error, using original file:', err);
+          resolve(file);
+        }
+      };
+      img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
 export default function MediaPickerModal({
   isOpen,
   onClose,
@@ -25,6 +126,7 @@ export default function MediaPickerModal({
   const [selectedUrl, setSelectedUrl] = useState(currentImage || '');
   const [customUrl, setCustomUrl] = useState(currentImage || '');
   const [uploading, setUploading] = useState(false);
+  const [uploadStatusText, setUploadStatusText] = useState('');
   const [uploadError, setUploadError] = useState('');
   const [lastUploaded, setLastUploaded] = useState(null);
   const fileInputRef = useRef(null);
@@ -57,19 +159,38 @@ export default function MediaPickerModal({
     if (!file) return;
     setUploadError('');
     setUploading(true);
+    setUploadStatusText('Memproses foto...');
 
     try {
+      // 1. Auto-compress photos > 1.5MB to bypass Vercel 4.5MB Payload Too Large (413) limit
+      let fileToUpload = file;
+      if (file.size > 1.5 * 1024 * 1024) {
+        setUploadStatusText(`Mengompresi resolusi foto (${(file.size / (1024 * 1024)).toFixed(1)} MB)...`);
+        fileToUpload = await compressImageIfNeeded(file);
+      }
+
+      setUploadStatusText('Mengunggah foto ke server...');
       const formData = new FormData();
-      formData.append('file', file);
+      formData.append('file', fileToUpload);
 
       const res = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
       });
 
-      const data = await res.json();
+      if (res.status === 413) {
+        throw new Error('Ukuran foto terlalu besar untuk server Vercel (413 Payload Too Large). Silakan coba dengan foto di bawah 4.5MB.');
+      }
+
+      let data;
+      try {
+        data = await res.json();
+      } catch (e) {
+        throw new Error(`Upload server error (${res.status}): Server tidak mengembalikan response yang valid.`);
+      }
+
       if (!res.ok) {
-        throw new Error(data.error || 'Failed to upload photo.');
+        throw new Error(data.error || `Upload gagal dengan status ${res.status}`);
       }
 
       // Add to mediaList
@@ -93,6 +214,7 @@ export default function MediaPickerModal({
       setUploadError(err.message);
     } finally {
       setUploading(false);
+      setUploadStatusText('');
     }
   };
 
@@ -383,7 +505,7 @@ export default function MediaPickerModal({
                     Click to Browse Image from Computer or Drag &amp; Drop Here
                   </h3>
                   <p style={{ color: '#94a3b8', fontSize: '0.825rem', margin: '0 0 18px 0' }}>
-                    Supports JPG, PNG, WEBP, SVG, GIF (Max 15MB)
+                    Supports JPG, PNG, WEBP, SVG, GIF (Foto otomatis dioptimalkan agar upload lancar)
                   </p>
                   <button
                     type="button"
@@ -407,7 +529,7 @@ export default function MediaPickerModal({
               {uploading && (
                 <div style={{ marginTop: '20px', color: '#38bdf8', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <span style={{ width: '12px', height: '12px', borderRadius: '50%', border: '2px solid #38bdf8', borderTopColor: 'transparent', animation: 'spin 1s linear infinite' }} />
-                  <span>Uploading and processing photo...</span>
+                  <span>{uploadStatusText || 'Uploading and processing photo...'}</span>
                 </div>
               )}
 

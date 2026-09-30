@@ -4,6 +4,8 @@ import path from 'path';
 import { put } from '@vercel/blob';
 import { verifySessionToken, SESSION_COOKIE_NAME } from '../../../lib/auth';
 import { query } from '../../../lib/db';
+export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
 
 export async function POST(request) {
   try {
